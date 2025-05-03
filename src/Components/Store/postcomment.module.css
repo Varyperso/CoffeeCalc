@@ -1,0 +1,31 @@
+.post__comment {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 100%;
+  align-items: center;
+}
+
+.post__comment > textarea {
+  max-width: 80%;
+  min-width: 40%;
+}
+
+.rating {
+  font-size: 30px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.star {
+  color: gray;
+  transition: color 0.2s ease;
+}
+
+.starFilled {
+  color: yellow;
+}
+
+.star:hover {
+  color: gold;
+}

@@ -1,0 +1,73 @@
+.nav {
+  position: sticky;
+  display: flex;
+  top: 0;
+  z-index: 10;
+  overflow-x: auto;
+  white-space: nowrap;
+  background: rgb(21, 0, 11);
+}
+
+.nav ul {
+  list-style: none;
+  margin-left: auto;
+}
+
+.navli {
+  display: inline-block;
+  font-size: 2rem;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  height: 100%;
+}
+.navli .active {
+  color: var(--my-red);
+}
+
+.nav ul li a {
+  position: relative;
+  align-content: center;
+  padding: 0.8em;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--my-text-orange);
+  transition:
+    color 0.3s ease-in,
+    background-color 0.3s ease-out,
+    border-radius 0.4s;
+  height: 100%;
+}
+.nav ul li a:hover {
+  color: var(--my-red);
+  background-color: var(--my-background);
+}
+
+.nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, rgb(131, 11, 47) 0%, rgb(138, 60, 0) 50%, rgb(203, 132, 0) 100%);
+  transition: width 0.3s ease;
+}
+
+.nav ul li a:hover::after {
+  width: 100%;
+}
+
+.siteTitle {
+  position: relative;
+  margin-right: 1rem;
+  align-self: center;
+  font-family: 'M Plus', system-ui;
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+  font-weight: 600;
+  background: var(--my-gradient-title);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  padding: 0px 0px 0px 16px;
+}

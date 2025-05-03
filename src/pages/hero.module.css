@@ -1,0 +1,40 @@
+@keyframes textDecoration {
+  0% {
+    text-decoration: underline solid rgb(27, 201, 0);
+    text-decoration-thickness: 2px;
+  }
+  50% {
+    text-decoration: underline solid rgb(93, 72, 255);
+    text-decoration-thickness: 2px;
+  }
+  100% {
+    text-decoration: underline solid rgb(27, 201, 0);
+    text-decoration-thickness: 2px;
+  }
+}
+
+.main__heading {
+  color: rgb(0, 145, 255);
+  background-color: rgb(33, 14, 0);
+  padding: 0.25rem;
+  animation: 3.2s infinite forwards textDecoration;
+  text-underline-offset: 0.25rem;
+}
+.main__heading__span {
+  text-shadow:
+    1px 1px 12px rgb(112, 80, 0),
+    2px 2px 4px rgb(106, 19, 0);
+}
+.login {
+  position: sticky;
+  top: 0;
+  background-color: rgb(33, 14, 0);
+  margin: 0;
+}
+
+.small {
+  width: 24px;
+}
+.blue {
+  color: var(--my-blue);
+}

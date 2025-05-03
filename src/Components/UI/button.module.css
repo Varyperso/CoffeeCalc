@@ -1,0 +1,34 @@
+.btn {
+  background-color: transparent;
+  color: var(--my-turquise);
+  border: 1px solid var(--my-darkpink);
+  border-radius: 4px;
+  padding: 0.5em;
+  margin: 0.5em;
+  font-size: 1.8rem;
+  transition:
+    color 0.2s ease-in,
+    border 0.3s ease-out;
+}
+
+.logoutButton {
+  font-size: 1.6rem;
+  background-color: transparent;
+  margin-right: 2rem;
+  border: none;
+  color: var(--my-purple);
+}
+.logoutButton:hover {
+  color: var(--my-darkred);
+}
+
+.btn:hover {
+  color: var(--my-turquise);
+  border: 1px solid var(--my-darkred);
+  cursor: pointer;
+}
+
+button:disabled {
+  color: var(--my-blue);
+  box-shadow: 2px 0px 1em 0.25em #3907074d;
+}

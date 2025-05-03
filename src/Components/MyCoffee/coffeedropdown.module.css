@@ -1,0 +1,40 @@
+.dropdownContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownPopup {
+  resize: both;
+  width: 20em;
+  height: 20em;
+  font-size: 1.4rem;
+  position: absolute;
+  top: 75%;
+  left: 100%;
+  overflow: auto;
+  background-color: var(--my-background);
+  border: 3px solid #48480059;
+  border-radius: 0.25rem;
+  z-index: 1000;
+}
+
+.dropdownItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25em;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.3s;
+}
+
+.dropdownItem:hover {
+  background-color: #f0f0f01a;
+  color: rgb(218, 133, 35);
+}
+
+.coffeeDescription:hover::after {
+}
+
+.coffeeOptionsButton {
+}

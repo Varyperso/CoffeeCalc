@@ -1,0 +1,27 @@
+.card {
+  position: relative;
+  border: 2px solid #4d1a39;
+  margin: 0.125rem auto;
+  text-align: center;
+  width: min(100%, 7rem);
+  color: var(--my-turquise);
+}
+
+.card__toggled {
+  position: relative;
+  border: 2px solid #4d1a39;
+  min-width: 5rem;
+  max-height: 5rem;
+  margin-inline: 1rem;
+}
+
+.hover__info {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  max-width: 12rem;
+  background: rgba(117, 59, 115, 0.34);
+  padding: 0.5rem;
+  z-index: 10;
+  cursor: pointer;
+}

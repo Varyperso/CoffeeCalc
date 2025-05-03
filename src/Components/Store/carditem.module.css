@@ -1,0 +1,76 @@
+.card__wrapper {
+  border: 1px solid rgb(55, 45, 16);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 0.5rem 0.125rem rgb(41, 22, 5);
+  background-color: rgb(38, 26, 7);
+}
+
+.headingAndRating__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__heading {
+  color: rgb(from var(--my-text-lightgreen) r g calc(b - 20));
+  font-family: 'Montserrat-bold';
+  font-size: 2rem;
+  margin: 0 auto;
+  padding-left: 3rem;
+}
+
+.card__content {
+  padding: 0.25rem;
+  margin-top: auto;
+}
+
+.card__image {
+  place-self: center;
+  object-fit: contain;
+  max-width: 93.75%;
+  max-height: 66vh;
+  margin-block: 0.5rem;
+}
+
+.priceAndQuantityLeft__wrapper {
+  display: flex;
+  font-size: 1.8rem;
+}
+.price {
+  margin-left: 0.5rem;
+}
+.quantityLeft {
+  margin-left: auto;
+  margin-right: 0.5rem;
+}
+
+.quantity__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.quantity__wrapper > input {
+  min-width: 6em;
+}
+.card__quantity {
+  position: relative;
+  display: inline;
+  float: inline-start;
+  max-width: 8rem;
+}
+
+.itemDescription {
+  position: absolute;
+  top: 0.25rem;
+}
+
+.stars {
+  line-height: 1.2;
+  margin-left: 1rem;
+}
+.specialStar {
+  top: -0.2rem;
+}

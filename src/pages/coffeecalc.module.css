@@ -1,0 +1,34 @@
+.calc__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-block: 1rem;
+}
+
+.calc__wrapper > :nth-child(2) {
+  width: 100rem;
+  max-width: 50%;
+}
+
+input[type='range'] {
+  width: 16rem;
+  margin: 0;
+}
+
+input[type='radio'] {
+  width: 1.2rem;
+  margin: 0.4rem;
+}
+input[type='radio']:hover {
+  transform: scale(1.1);
+}
+
+datalist {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 16rem;
+  left: 4rem;
+  color: var(--my-purple);
+  font-size: 1rem;
+}

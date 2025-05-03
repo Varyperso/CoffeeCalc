@@ -1,0 +1,86 @@
+.parentGrid {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  grid-template-rows: 10% 90%;
+  grid-template-areas: 'sidebar header' 'sidebar main' 'sidebar footer';
+  min-height: 77vh;
+  max-height: 77vh;
+  transition: grid-template-columns 0.6s ease;
+}
+
+.parentGrid.resize {
+  grid-template-columns: 11rem 1fr;
+}
+
+.gridHeader {
+  grid-area: header;
+  background-color: rgba(45, 32, 28, 0.204);
+}
+.gridSidebar {
+  grid-area: sidebar;
+  position: relative;
+  background-color: rgba(49, 44, 18, 0.214);
+}
+.gridMain {
+  grid-area: main;
+  background-color: rgba(19, 27, 10, 0.323);
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
+  max-height: max(15rem, 99%);
+}
+
+.logo {
+  margin-top: 1.5rem;
+}
+.logo > svg {
+  min-width: 2.5rem;
+  max-width: 2.5rem;
+  transition: max-width 0.5s ease-in-out;
+}
+.resize .logo > svg {
+  max-width: 2rem;
+}
+
+.gridSidebar button {
+  position: absolute;
+  inset: 2rem -1rem auto auto;
+  width: 2.5rem;
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+}
+
+.gridSidebar button > svg {
+  position: relative;
+  right: 0.5rem;
+  color: brown;
+}
+
+.chat__line {
+  text-align: left;
+}
+
+.chat__image {
+  display: inline;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 66%;
+}
+.chat__username {
+  color: var(--my-purple);
+}
+.chat__username__me {
+  color: rgb(17, 89, 255);
+}
+.chat__input {
+  width: 48rem;
+  font-size: 1.25rem;
+}
+
+.input__wrapper {
+  font-size: 2rem;
+  text-align: left;
+  background-color: rgb(23, 29, 15);
+}

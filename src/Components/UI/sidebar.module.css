@@ -1,0 +1,77 @@
+.sidebar {
+  font-family: 'Rethink Sans', sans-serif;
+  position: fixed;
+  height: calc(100vh - 60px); /* Full height minus the navbar height */
+  z-index: 10;
+  transition: width 0.4s ease-out;
+}
+
+.sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.sidebar a {
+  height: 10vh;
+  color: var(--my-turquise);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition:
+    background-color 0.5s ease,
+    color 0.7s ease;
+}
+
+.aspan {
+  transition:
+    opacity 0.3s ease-in,
+    scale 0.4s ease-out,
+    width 0.4s ease;
+}
+.svg {
+  transition:
+    opacity 0.3s ease-in,
+    scale 0.4s ease-out;
+  max-width: 3.2rem;
+  position: absolute;
+}
+.hidden {
+  opacity: 0;
+  scale: 0%;
+  font-size: 0%;
+  width: 200%; /*width, font size, scale and opacity transitions to make the animation smoother*/
+}
+.visible {
+  scale: 100%;
+  opacity: 1;
+  width: 100%;
+  font-size: 100%;
+}
+
+.expanded {
+  width: 16rem;
+}
+.collapsed {
+  width: 6rem;
+}
+
+.sidebar li:last-child {
+  margin-top: auto;
+  color: var(--my-darkred);
+}
+
+.sidebar a:hover,
+.sidebar a:focus-visible {
+  background-color: rgba(60, 63, 19, 0.422);
+  color: var(--my-lightgreen);
+}
+
+.collapsed p svg:hover {
+  cursor: zoom-in;
+}
+.expanded p svg:hover {
+  cursor: zoom-out;
+}

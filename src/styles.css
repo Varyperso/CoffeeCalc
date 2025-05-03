@@ -1,0 +1,241 @@
+:root {
+  --my-text-grey: rgb(203, 186, 136);
+  --my-text-orange: rgb(210, 170, 97);
+
+  --my-text-lightgreen: rgb(191, 208, 113);
+  --my-lightgreen: rgb(69, 192, 69);
+  --my-lightgreen2: rgb(131, 216, 56);
+  --my-turquise: rgb(0, 167, 150);
+  --my-background: rgb(35, 33, 9);
+  --my-red: rgb(150, 8, 24);
+  --my-darkred: rgb(114, 7, 19);
+  --my-purple: rgb(114, 44, 255);
+  --my-blue: rgb(53, 120, 255);
+  --my-darkpink: rgb(68, 10, 63);
+  --my-lightbrown: rgb(120, 60, 20);
+
+  --my-gradient-title: linear-gradient(
+    90deg,
+    rgb(0, 161, 121) 2%,
+    rgb(167, 142, 0) 19%,
+    rgb(158, 108, 0) 36%,
+    rgb(158, 89, 0) 54%,
+    rgb(143, 57, 0) 82%,
+    rgb(96, 22, 0) 92%,
+    rgb(70, 9, 0) 98%
+  );
+
+  --h1: bold 1.125rem/1.4em var(--ff);
+
+  color-scheme: light dark;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./fonts/montserrat-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat-bold';
+  src: url('./fonts/montserrat700.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'M Plus';
+  font-weight: normal;
+  src: url('./fonts/m-plus.woff2') format('woff2');
+  font-display: swap;
+}
+
+html {
+  min-height: max(100vh, 100%);
+  background: var(--my-background);
+}
+
+body {
+  text-align: center;
+  color: var(--my-text-grey);
+  font-size: clamp(1.2rem, 2vw + 1.4rem, 2.2rem);
+  font-family: 'Space Mono', monospace, sans-serif;
+}
+h1 {
+  font-size: 3.8rem;
+  line-height: 1.4em;
+}
+h2 {
+  font-size: 3rem;
+  line-height: 1.3em;
+}
+h3 {
+  font-size: 2.4rem;
+  line-height: 1.2em;
+}
+h4 {
+  font-size: 2rem;
+  line-height: 1.1em;
+}
+h5 {
+  font-size: 1.8rem;
+  line-height: 1em;
+}
+h6 {
+  font-size: 1.4rem;
+  line-height: 0.9em;
+}
+
+.content {
+  transition: margin-left 0.4s ease-out;
+  font-family: Montserrat, serif;
+}
+
+.expandedContent {
+  margin-left: 16rem;
+}
+
+.collapsedContent {
+  margin-left: 6rem;
+}
+
+.input__one {
+  width: 18rem;
+  font-size: 1.6rem;
+  background-color: transparent;
+  color: var(--my-text-orange);
+  border: 1px solid rgb(225, 182, 102);
+  border-radius: 4px;
+  caret-color: var(--my-lightgreen);
+  transition: border-color 0.6s ease;
+  margin: 0.4em;
+  padding: 0.4em;
+}
+.input__one:hover:not(.validInput, .invalidInput) {
+  border-color: rgb(154, 57, 15);
+}
+.input__one:focus:not(.validInput, .invalidInput) {
+  outline: none;
+  border-color: rgb(136, 46, 129);
+}
+
+.validInput {
+  outline: none;
+  border-color: green;
+  box-shadow:
+    0.5rem 0.5rem 1rem -0.75rem green,
+    -0.5rem -0.5rem 1rem -0.75rem green;
+}
+.invalidInput {
+  outline: none;
+  border-color: red;
+  box-shadow:
+    0.5rem 0.5rem 1rem -0.75rem rgb(182, 0, 0),
+    -0.5rem -0.5rem 1rem -0.75rem rgb(182, 0, 0);
+}
+
+.deleteCoffeeEntry {
+  float: right;
+  padding-right: 1rem;
+  color: var(--my-red);
+}
+
+.deleteCoffeeEntry:hover {
+  color: red;
+  cursor: pointer;
+}
+
+span[data-description] {
+  position: relative;
+  cursor: help;
+}
+
+span[data-description]::after {
+  content: attr(data-description);
+  position: absolute;
+  padding: 0.125em;
+  color: var(--my-purple);
+  background-color: rgb(191, 199, 255);
+  border: 2px rgb(146, 201, 196) solid;
+  border-radius: 8px;
+  z-index: 10;
+  opacity: 0;
+  scale: 0;
+  transition:
+    opacity 0.6s,
+    scale 0.4s;
+  width: max-content;
+  text-wrap: wrap;
+  max-width: 22rem;
+}
+
+span[data-description]:hover::after,
+span[data-description]:focus::after {
+  scale: 1;
+  opacity: 1;
+}
+
+select {
+  background-color: var(--my-background);
+  color: var(--my-text-grey);
+  outline: none;
+  font-size: 1.8rem;
+  height: fit-content;
+}
+
+textarea {
+  width: 66%;
+  max-width: 66vw;
+  height: 14vh;
+  max-height: 25vw;
+  background-color: var(--my-background);
+  color: var(--my-text-lightgreen);
+}
+fieldset {
+  margin-top: 0rem;
+  border: 1px solid var(--my-darkpink);
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+legend {
+  font-size: 1.6rem;
+  color: var(--my-purple);
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  background-color: #1542172f;
+  color: var(--my-lightgreen2);
+  padding: 0.2em;
+  border: 1px solid #2e3016;
+}
+
+td {
+  padding: 0.2em;
+  text-align: left;
+  border: 1px solid var(--my-darkpink);
+}
+td:hover {
+  background-color: #5e7a2136;
+}
+tr:hover {
+  background-color: #10444623;
+}
+th:hover {
+  cursor: pointer;
+  background-color: #3755a943;
+}
+
+hr {
+  border-color: var(--my-turquise);
+}
+
+::placeholder {
+  font-size: 1.3rem;
+  color: #a06c8e;
+}

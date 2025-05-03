@@ -1,0 +1,40 @@
+.inputAndLabel__wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.inputAndLabel__wrapper > label {
+  display: none;
+  position: absolute;
+  top: -1em;
+  left: 0.6em;
+  font-size: 0.6em;
+  color: var(--my-lightbrown);
+}
+.inputAndLabel__wrapper > input:not(:placeholder-shown) + label {
+  display: inline;
+}
+
+@keyframes textDecoration {
+  0% {
+    text-decoration: underline solid rgba(0, 255, 106, 0.025);
+  }
+  50% {
+    text-decoration: underline solid rgb(42, 25, 223);
+  }
+  100% {
+    text-decoration: underline solid rgba(0, 255, 204, 0.024);
+  }
+}
+
+.underline {
+  text-decoration: underline solid var(--my-lightbrown);
+  color: var(--my-purple);
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+.underline:hover {
+  text-decoration: underline solid var(--my-darkred);
+  cursor: pointer;
+}

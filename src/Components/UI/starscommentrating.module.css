@@ -1,0 +1,18 @@
+.rating {
+  font-size: 30px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.star {
+  color: gray;
+  transition: color 0.2s ease;
+}
+
+.starFilled {
+  color: yellow;
+}
+
+.star:hover {
+  color: gold;
+}
