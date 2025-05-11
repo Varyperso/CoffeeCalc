@@ -11,7 +11,7 @@ const userConnections = new Map()
 wss.on('connection', (ws, req) => {
   console.log('User connected')
 
-  let userId = null
+  let currentUserId = null
 
   ws.on('message', async data => {
     const message = JSON.parse(data)
@@ -19,6 +19,7 @@ wss.on('connection', (ws, req) => {
 
     if (event === 'handshake' && userId) {
       userConnections.set(userId, ws)
+      currentUserId = userId
       console.log(`User ${userId} connected`)
 
       if (privateChat) {
@@ -85,9 +86,9 @@ wss.on('connection', (ws, req) => {
   })
 
   ws.on('close', () => {
-    if (userId) {
-      userConnections.delete(userId)
-      console.log(`User ${userId} disconnected`)
+    if (currentUserId) {
+      userConnections.delete(currentUserId)
+      console.log(`User ${currentUserId} disconnected`)
     }
   })
 })
