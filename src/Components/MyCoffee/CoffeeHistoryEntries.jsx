@@ -9,7 +9,7 @@ export const CoffeeHistoryEntries = ({ coffeeHistory, setCoffeeHistory }) => {
   const { user } = useUserData()
 
   const handleDeleteEntry = async time => {
-    await myFetch({ url: `http://localhost:5000/UserCoffeeHistory/${user._id}`, method: 'DELETE', data: { timeId: time } })
+    await myFetch({ url: `https://localhost:5000/UserCoffeeHistory/${user._id}`, method: 'DELETE', data: { timeId: time } })
     console.log('coffeeHistory', coffeeHistory)
     delete coffeeHistory[time]
     const updatedHistory = { ...coffeeHistory }

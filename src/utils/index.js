@@ -230,7 +230,7 @@ export const coffeeOptions = [
   }
 ]
 
-export const coffeeConsumptionHistory = {
+export const coffeeConsumptionHistory = { // mock for testing
   1735111502183: { name: 'Espresso', cost: 5.52, servingSize: 1.5, mood: 'good', location: 'earth' },
   1735090533976: { name: 'Espresso', cost: 6.78, servingSize: 1.5, mood: 'good', location: 'earth' },
   1735199427371: { name: 'Espresso', cost: 6.93, servingSize: 1.5, mood: 'good', location: 'earth' },
@@ -523,21 +523,3 @@ export function getMonthlyStats(dailyStats) {
 
   return monthlyStats
 }
-
-////
-
-// var compose = function (functions) {
-//   return function (x) {
-//     if (functions.length === 0) return x
-//     let result = x
-//     for (let i = functions.length - 1; i >= 0; i--) {
-//       result = functions[i](result)
-//     }
-//     return result
-//   }
-// }
-
-// const arr1 = [x => x + 1, x => x * x, x => 2 * x]
-
-// const composed = compose(arr1)
-// console.log(composed(4))

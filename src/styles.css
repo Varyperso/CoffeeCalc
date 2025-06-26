@@ -233,9 +233,10 @@ th:hover {
 
 hr {
   border-color: var(--my-turquise);
+  margin-block: 0.5rem;
 }
 
 ::placeholder {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   color: #a06c8e;
 }

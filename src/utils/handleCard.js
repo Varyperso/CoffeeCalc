@@ -27,8 +27,8 @@ export const handleAddToCart = (setItem, item) => {
 }
 
 export const handleDeleteItem = async (item, setData) => {
-  await myFetch({ url: `http://localhost:5000/items/${item._id}`, method: 'DELETE' }) // returns deleted item
-  const itemsFetched = await myFetch({ url: 'http://localhost:5000/items' })
+  await myFetch({ url: `https://localhost:5000/items/${item._id}`, method: 'DELETE' }) // returns deleted item
+  const itemsFetched = await myFetch({ url: 'https://localhost:5000/items' })
   localStorage.setItem('items', JSON.stringify(itemsFetched))
   setData(itemsFetched)
 }

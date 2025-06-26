@@ -59,7 +59,7 @@ router.post('/verify', async (req, res) => {
   if (!regexUsername.test(user) || !email || !regexPassword.test(password)) return res.status(401).json({ message: 'Fields Invalid' })
   try {
     if (verificationCodes[email] === verificationCode) {
-      const hashedPassword = await bcrypt.hash(password, 10)
+      const hashedPassword = await bcrypt.hash(password, 10) // 10 = salt rounds
       const newUser = new User({
         user,
         password: hashedPassword,
@@ -143,7 +143,7 @@ router.post('/forgot-password', async (req, res) => {
       from: 'varyperso1@gmail.com',
       to: email,
       subject: 'Password Reset Request',
-      text: `Click this link to reset your password: http://localhost:3000/reset-password?token=${resetToken}`
+      text: `Click this link to reset your password: https://localhost:3000/reset-password?token=${resetToken}`
     })
 
     res.status(200).json({ success: true, message: 'Reset link sent to your email.' })

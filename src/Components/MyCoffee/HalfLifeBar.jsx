@@ -1,4 +1,3 @@
-import React from 'react'
 import { calculateCurrentCaffeineLevel } from '../../utils'
 //prettier-ignore
 export const HalfLifeBar = ({ coffeeHistory, halfLifeHours, setHalfLifeHours }) => {
@@ -15,7 +14,7 @@ export const HalfLifeBar = ({ coffeeHistory, halfLifeHours, setHalfLifeHours }) 
         <option value="7" label="7h"></option>
         <option value="8" label="8h"></option>
       </datalist>
-      <span style={{ fontSize: '2.0rem' }}><strong> Caffeine Now </strong>: <span style={{ color: 'var(--my-turquise)' }}> {currentCaffeineLevel}</span><span style={{color:"var(--my-lightbrown)"}}>mg </span> </span>
+      <div style={{ fontSize: '2.0rem', width: '19ch' }}><strong> Caffeine Now </strong>: <span style={{ color: 'var(--my-turquise)', fontFamily: 'monospace' }}> {currentCaffeineLevel}</span><span style={{ color:"var(--my-lightbrown)" }}>mg </span> </div>
     </div>
   )
 }

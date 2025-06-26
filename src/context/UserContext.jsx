@@ -30,7 +30,7 @@ export const UserProviderUser = ({ children, setLoggedIn }) => {
   const validateUserOnRefresh = async () => {
     const parsedUser = loadFromLocalStorage('user', {});
     if (parsedUser._id) {
-      const userData = await myFetch({url: `http://localhost:5000/user/${parsedUser._id}` })
+      const userData = await myFetch({ url: `https://localhost:5000/user/${parsedUser._id}` })
       setUser(userData);
     } 
   };

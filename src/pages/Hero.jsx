@@ -1,4 +1,3 @@
-import React from 'react'
 import Login from '../Components/User/Login'
 import styles from './hero.module.css'
 import Svgs from '../svg/Svgs'

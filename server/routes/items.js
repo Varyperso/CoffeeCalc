@@ -24,7 +24,7 @@ router.post('/items', adminMiddleware, multerUpload.single('image'), async (req,
     itemName: name,
     quantityLeft: quantity,
     price,
-    image: `http://localhost:5000/public/items/${req.file.filename}`,
+    image: `https://localhost:5000/public/items/${req.file.filename}`,
     description: description,
     comments: []
   })

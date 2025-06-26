@@ -22,7 +22,7 @@ const UpdateUser = ({ user, setUser }) => {
     selectedFile && formData.append('image', selectedFile)
 
     try {
-      const data = await myFetch({ url: `http://localhost:5000/api/form`, method: 'POST', data: formData })
+      const data = await myFetch({ url: `https://localhost:5000/api/form`, method: 'POST', data: formData })
       setUser(prevUser => ({
         ...prevUser,
         image: data.imageUrl ? data.imageUrl : prevUser.image,

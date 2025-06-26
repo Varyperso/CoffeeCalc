@@ -29,7 +29,7 @@ const PostComment = ({ itemId, setItems }) => {
       rating
     }
     
-    let result = await myFetch({url :`http://localhost:5000/items/${itemId}/comments`, method: 'POST', data: commentData })
+    let result = await myFetch({url :`https://localhost:5000/items/${itemId}/comments`, method: 'POST', data: commentData })
     if (result.error) {
       setError(result.error)
       setTimeout(() => setError(""), 2500)
@@ -37,7 +37,7 @@ const PostComment = ({ itemId, setItems }) => {
     else {
       setSuccess('Comment posted successfully!')
       setTimeout(() => setSuccess(""), 2500)
-      const itemsFetched = await myFetch({ url: 'http://localhost:5000/items' }) // fetch items from the server to see item updates (just refreshing the page will use localhost items)
+      const itemsFetched = await myFetch({ url: 'https://localhost:5000/items' }) // fetch items from the server to see item updates (just refreshing the page will use localhost items)
       setItems(itemsFetched)
       localStorage.setItem('items', JSON.stringify(itemsFetched))
       setComment('')

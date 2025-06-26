@@ -19,7 +19,6 @@ router.get('/:id', verifyToken, async (req, res) => {
 router.post('/:id', verifyToken, async (req, res) => {
   const coffeeEntry = req.body
   const userId = req.params.id
-  console.log('post', coffeeEntry)
   try {
     const coffeeHistoryDoc = await CoffeeHistory.findOne({ userId })
 
@@ -38,7 +37,6 @@ router.post('/:id', verifyToken, async (req, res) => {
 router.delete('/:id', verifyToken, async (req, res) => {
   const timeId = req.body.timeId
   const userId = req.params.id
-  console.log('deleting entry id', timeId)
   try {
     const coffeeHistoryDoc = await CoffeeHistory.findOne({ userId })
     coffeeHistoryDoc.coffeeHistory.delete(timeId)

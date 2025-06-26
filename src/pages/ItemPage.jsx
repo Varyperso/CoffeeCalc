@@ -18,11 +18,11 @@ const ItemPage = () => {
 
   const onDelete = async commentId => {
     await myFetch({
-      url: `http://localhost:5000/items/${item._id}/comments`,
+      url: `https://localhost:5000/items/${item._id}/comments`,
       method: 'DELETE',
       data: { userId: user._id, commentId, admin: user.admin }
     })
-    const itemsFetched = await myFetch({ url: 'http://localhost:5000/items' })
+    const itemsFetched = await myFetch({ url: 'https://localhost:5000/items' })
     localStorage.setItem('items', JSON.stringify(itemsFetched))
     setItems(itemsFetched)
   }

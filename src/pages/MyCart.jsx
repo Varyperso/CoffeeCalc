@@ -25,12 +25,12 @@ export default function MyCart() {
     const itemsToPurchase = itemsInCart.map(item => ({ ...item, quantity: item.quantitySelected }))
     if (!itemsToPurchase.length) return
 
-    const result = await myFetch({ url: `http://localhost:5000/purchase/${user._id}`, method: 'POST', data: itemsToPurchase })
+    const result = await myFetch({ url: `https://localhost:5000/purchase/${user._id}`, method: 'POST', data: itemsToPurchase })
     if (result.error)
       setMessage('error', result.error) // if some/all items were cancelled
     else setMessage('purchased')
 
-    const userData = await myFetch({ url: `http://localhost:5000/user/${user._id}` }) // renew user data to update previous purchases
+    const userData = await myFetch({ url: `https://localhost:5000/user/${user._id}` }) // renew user data to update previous purchases
     setUser(userData)
     setItemsInCart([])
     localStorage.setItem('itemsInCart', JSON.stringify([]))

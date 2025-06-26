@@ -14,7 +14,7 @@ export const UserProviderItems = ({ children }) => {
     const parsedItems = loadFromLocalStorage("items", []);
     if (parsedItems.length) setItems(parsedItems);
     else {
-      const fetchedItems = await myFetch({url: 'http://localhost:5000/items'})
+      const fetchedItems = await myFetch({url: 'https://localhost:5000/items'})
       setItems(fetchedItems)
       localStorage.setItem('items', JSON.stringify(fetchedItems));
     }

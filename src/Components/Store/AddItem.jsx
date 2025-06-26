@@ -34,9 +34,9 @@ export default function AddItem() {
     formData.append('image', selectedFile)
  
     try {
-      await myFetch({ url: `http://localhost:5000/items`, method: 'POST', data: formData })
+      await myFetch({ url: `https://localhost:5000/items`, method: 'POST', data: formData })
       setError('')
-      const itemsFetched = await myFetch({ url: 'http://localhost:5000/items' })
+      const itemsFetched = await myFetch({ url: 'https://localhost:5000/items' })
       setItems(itemsFetched)
       localStorage.setItem('items', JSON.stringify(itemsFetched))
     } 

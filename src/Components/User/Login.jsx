@@ -50,12 +50,12 @@ const Login = ({ setLoggedIn }) => {
     }
 
     const userObjectToFetch = { user, password };
-    const data = await myFetch({ url: "http://localhost:5000/login", method: "POST", data: userObjectToFetch })
+    const data = await myFetch({ url: "https://localhost:5000/login", method: "POST", data: userObjectToFetch })
     if (data.error) {
       setMessage(data.error); return
     } 
     
-    const userData = await myFetch({ url: `http://localhost:5000/user/${data._id}` })
+    const userData = await myFetch({ url: `https://localhost:5000/user/${data._id}` })
     if (userData.error) {
       setMessage(userData.error); return
     } 
@@ -78,7 +78,7 @@ const Login = ({ setLoggedIn }) => {
 
     setMessage("Awaiting Server...")
     const userObjectToFetch = { user, password, email };
-    const userObject = await myFetch({ url: "http://localhost:5000/register", method: "POST", data: userObjectToFetch })
+    const userObject = await myFetch({ url: "https://localhost:5000/register", method: "POST", data: userObjectToFetch })
     if (userObject.error) {
       setMessage(userObject.error); return
     }
@@ -94,13 +94,13 @@ const Login = ({ setLoggedIn }) => {
     }
     
     const userToVerify = { email, verificationCode, password, user }
-    const data = await myFetch({ url: "http://localhost:5000/verify", method:"POST", data: userToVerify })
+    const data = await myFetch({ url: "https://localhost:5000/verify", method:"POST", data: userToVerify })
     if (data.error) {
       setMessage(data.error); return
     } 
 
     setIsCodeSent(false);
-    const userData = await myFetch({url: `http://localhost:5000/user/${data._id}` })
+    const userData = await myFetch({url: `https://localhost:5000/user/${data._id}` })
     if (userData.error) {
       setMessage(userData.error); return
     }
@@ -122,7 +122,7 @@ const Login = ({ setLoggedIn }) => {
       return;
     }
     try {
-      const data = await myFetch({ url: "http://localhost:5000/forgot-password", method: "POST", data: { email } })
+      const data = await myFetch({ url: "https://localhost:5000/forgot-password", method: "POST", data: { email } })
       if (data.success) setMessage("A password reset link has been sent to your email.");
       else setMessage(data.message || "Something went wrong. Please try again.");
     } catch (error) {

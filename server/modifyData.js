@@ -1,4 +1,4 @@
-// update all items with a common property
+// demo coffee history insert for testing
 require('dotenv').config()
 const mongoose = require('mongoose')
 const CoffeeHistory = require('./models/CoffeeHistory')
@@ -35,7 +35,7 @@ mongoose
       // If the document doesn't exist, create a new document with the coffeeHistory
       const newUserHistory = new CoffeeHistory({
         userId: '67618e1a3ca6885e3898a291',
-        coffeeHistory: coffeeHistory // Set the coffeeHistory directly
+        coffeeHistory: coffeeHistory // Set the coffeeHistory directly (Mongoose will automatically convert a plain JavaScript object to a Map when saving)
       })
       await newUserHistory.save()
       console.log('New coffee history document created.')
@@ -47,7 +47,7 @@ mongoose
         { userId: userIdString }, // Use userId to filter the document
         {
           $set: {
-            coffeeHistory: coffeeConsumptionHistory // Set the coffeeConsumptionHistory object
+            coffeeHistory: coffeeConsumptionHistory // Set the coffeeConsumptionHistory object(where is it? probably in the frontend utils)
           }
         }
       )

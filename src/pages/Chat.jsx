@@ -18,7 +18,7 @@ export default function Chat() {
   const { user } = useUserData()
 
   const inputRef = useRef(null);
-  const ws = useRef(null); // web socket
+  const ws = useRef(null);
   const containerRef = useRef(null); // auto scroll element
 
   function resizeHandler() {
@@ -27,7 +27,7 @@ export default function Chat() {
   
   useEffect(() => {
     const fetchUsers = async () => {
-      const fetchedUsers = await myFetch({ url: `http://localhost:5000/users` });
+      const fetchedUsers = await myFetch({ url: `https://localhost:5000/users` });
       setUsers(fetchedUsers);
     };
     fetchUsers();
@@ -76,10 +76,6 @@ export default function Chat() {
     };
   }, [privateChat]);
 
-  useEffect(() => {
-    if (containerRef.current) containerRef.current.scrollTop = containerRef.current.scrollHeight;
-  }, [messages]);
-
   const sendMessage = () => {
     const inputValue = inputRef.current.value; 
     if (inputValue.trim() !== '') {
@@ -113,6 +109,10 @@ export default function Chat() {
     setPrivateChat(null)
   }
 
+  useEffect(() => {
+    if (containerRef.current) containerRef.current.scrollTop = containerRef.current.scrollHeight;
+  }, [messages]);
+
   console.log(messages);
   
   let privateChatWith;
@@ -121,7 +121,7 @@ export default function Chat() {
   return (
     <div className={`${styles.parentGrid} ${toggle && styles.resize}`} >
       <header className={styles.gridHeader}>
-       {privateChat ? <h2 style={{fontSize:"1.75rem"}}> Chatting With <span style={{color:"var(--my-purple)", fontSize:"2.5rem"}}>{privateChatWith.user}</span> </h2> : <h2 style={{fontSize:"1.75rem"}}> Global Chat Room </h2>}
+       <h2 style={{fontSize:"1.75rem", marginTop: "1rem" }}> {privateChat ? <> Chatting With <span style={{ color: "var(--my-purple)", fontSize: "2.5rem" }}> {privateChatWith.user} </span> </> : "Global Chat Room" } </h2>
       </header>
       <aside className={styles.gridSidebar}>
         <div className={styles.logo}> <Svgs name="chatUsers-icon"/> </div>

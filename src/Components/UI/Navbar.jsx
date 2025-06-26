@@ -47,7 +47,7 @@ const handleInactivity = () => {
 
   const refreshToken = async () => {
     try {
-      await myFetch({ url: `http://localhost:5000/refresh-token`, method: 'POST' })
+      await myFetch({ url: `https://localhost:5000/refresh-token`, method: 'POST' })
     } catch (error) {
       console.error('Error refreshing token:', error)
     }

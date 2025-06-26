@@ -21,7 +21,7 @@ const ResetPassword = () => {
       return
     }
     try {
-      const data = await myFetch({url: 'http://localhost:5000/reset-password', method: "POST", data: {token: resetToken, newPassword: newPassword}})
+      const data = await myFetch({url: 'https://localhost:5000/reset-password', method: "POST", data: {token: resetToken, newPassword: newPassword}})
       setMessage(data.message || 'Error resetting password.')
       setTimeout(() => navigate("/"), 2000) 
     } catch (error) {

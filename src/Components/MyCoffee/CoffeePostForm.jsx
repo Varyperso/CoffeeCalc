@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import Button from '../UI/Button'
 import CoffeeDropdown from './CoffeeDropdown'
 import styles from './coffeepostform.module.css'
@@ -7,7 +7,7 @@ import { myFetch } from '../../utils/myFetch'
 //prettier-ignore
 const CoffeePostForm = ({ setCoffeeHistory }) => {
   const [selectedCoffee, setSelectedCoffee] = useState(null)
-  const [error, setError] = useState("")
+  const [error, setError] = useState('')
 
   const { user } = useUserData()
 
@@ -22,10 +22,8 @@ const CoffeePostForm = ({ setCoffeeHistory }) => {
     e.preventDefault()
 
     if (!selectedCoffee?.name || !newCoffeeDataEntry.current.servingSize || !newCoffeeDataEntry.current.cost || !newCoffeeDataEntry.current.hours || !newCoffeeDataEntry.current.minutes) {
-      console.log(selectedCoffee);
-      
       setError("Missing Fields!")
-      setTimeout(() => setError(""), 2500)
+      setTimeout(() => setError(""), 3000)
       return
     }
 
@@ -44,7 +42,7 @@ const CoffeePostForm = ({ setCoffeeHistory }) => {
     const timestamp = nowTime - timeToSubtract
     newCoffeeData[timestamp] = coffeeData
     
-    await myFetch({ url: `http://localhost:5000/UserCoffeeHistory/${user._id}`, method: 'POST', data: newCoffeeData })
+    await myFetch({ url: `https://localhost:5000/UserCoffeeHistory/${user._id}`, method: 'POST', data: newCoffeeData })
 
     setCoffeeHistory(prev => ({...prev, ...newCoffeeData }))
   }
@@ -52,7 +50,7 @@ const CoffeePostForm = ({ setCoffeeHistory }) => {
   
   return (
     <>
-      <form onSubmit={handleSubmitForm} style={{border: "3px solid var(--my-darkpink)"}}>
+      <form onSubmit={handleSubmitForm} style={{ border: "3px solid var(--my-darkpink)"}}>
           <CoffeeDropdown setSelectedCoffee={setSelectedCoffee} selectedCoffee={selectedCoffee} />
           <div className={styles.inputs__wrapper} style={{flexDirection: "row"}}>
             <div>

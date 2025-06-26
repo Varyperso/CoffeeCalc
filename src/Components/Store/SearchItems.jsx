@@ -26,7 +26,7 @@ const SearchItems = () => {
   })
 
   const handleFetchItems = async () => {
-    const itemsFetched = await myFetch({ url: 'http://localhost:5000/items' }) // fetch items from the server to see item updates (just refreshing the page will use localhost items)
+    const itemsFetched = await myFetch({ url: 'https://localhost:5000/items' }) // fetch items from the server to see item updates (just refreshing the page will use localhost items)
     setItems(itemsFetched)
     localStorage.setItem('items', JSON.stringify(itemsFetched))
   }

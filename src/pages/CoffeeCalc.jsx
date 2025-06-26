@@ -18,11 +18,8 @@ export default function CoffeeCalc() {
 
   useEffect(() => {
     const personalCoffeeData = async () => {
-      const data = await myFetch({ url: `http://localhost:5000/UserCoffeeHistory/${user._id}` })
-      console.log(data.coffeeHistory)
-
+      const data = await myFetch({ url: `https://localhost:5000/UserCoffeeHistory/${user._id}` })
       if (data) setCoffeeHistory(data.coffeeHistory)
-      else console.log('no data')
     }
     if (user && user._id) personalCoffeeData()
   }, [user._id])
@@ -45,8 +42,8 @@ export default function CoffeeCalc() {
         </div>
 
         {coffeeStats && <CoffeeStats coffeeHistory={coffeeHistory} setCoffeeHistory={setCoffeeHistory} coffeeStats={coffeeStats} />} 
-        
       </div>
+      
       <div>
         {coffeeStats && <CoffeeStatsGraph coffeeStats={coffeeStats.daily_stats} />}
       </div>

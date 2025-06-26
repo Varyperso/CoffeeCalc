@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Papa from 'papaparse'
 import CoffeePlot from '../Components/CoffeeWorld/CoffeePlot'
 import Button from '../Components/UI/Button'
@@ -15,7 +15,7 @@ function CoffeeInfoTable() {
 
   useEffect(() => {
     if (tableType) {
-      fetch(`http://localhost:5000/WorldCoffeeInfo/${tableType}`)
+      fetch(`https://localhost:5000/WorldCoffeeInfo/${tableType}`)
         .then(response => response.text())
         .then(data => {
           Papa.parse(data, {

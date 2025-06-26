@@ -11,7 +11,7 @@ router.post('/api/form', multerUpload.single('image'), async (req, res) => {
     const user = await User.findById(req.body.id)
     if (!user) return res.status(404).json({ error: 'User not found.' })
 
-    if (req.file) user.image = `http://localhost:5000/public/${user._id}${path.extname(req.file.originalname)}`
+    if (req.file) user.image = `https://localhost:5000/public/${user._id}${path.extname(req.file.originalname)}`
 
     if (req.body.user) {
       let userNameAlreadyExists = await User.findOne({ user: req.body.user })

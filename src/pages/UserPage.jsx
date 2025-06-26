@@ -9,7 +9,7 @@ const UserPage = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const fetchedUser = await myFetch({ url: `http://localhost:5000/users/${user}` })
+      const fetchedUser = await myFetch({ url: `https://localhost:5000/users/${user}` })
       setPageUser(fetchedUser)
     }
     fetchUser()
