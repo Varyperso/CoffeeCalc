@@ -34,12 +34,11 @@ export default function Chat() {
   }, []);
 
   useEffect(() => {
-
     if (privateChat) ws.current = new WebSocket(`ws://localhost:8080/private/${privateChat}`);
     else ws.current = new WebSocket('ws://localhost:8080');
     
     ws.current.onopen = () => {
-      console.log(privateChat, "opened chat");
+      console.log(privateChat, "opened chat with");
       
       if (user && user._id) {
         const handshakeData = {
@@ -105,6 +104,7 @@ export default function Chat() {
   };
 
   const backToGeneralChat = () => {
+    if (!privateChat) return
     setMessages([])
     setPrivateChat(null)
   }

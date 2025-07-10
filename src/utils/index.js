@@ -347,6 +347,7 @@ export function getTimeSinceConsumption(utcMilliseconds) {
 }
 
 //prettier-ignore
+
 export function calculateCoffeeStats(coffeeConsumptionHistory) {
   const dailyStats = {}
 
@@ -362,11 +363,7 @@ export function calculateCoffeeStats(coffeeConsumptionHistory) {
   startDate.setHours(24, 0, 0, 0); 
   const endDate = new Date(Math.max(...timestamps));
   endDate.setHours(24, 0, 0, 0); 
-
-  console.log("start date:", startDate);
-  console.log("end date:",endDate);
   
-
   let currentDate = new Date(startDate) // copy for the while loop
 
   while (currentDate <= endDate) {
@@ -394,8 +391,6 @@ export function calculateCoffeeStats(coffeeConsumptionHistory) {
         dailyStats[dateString].count += 1
 
       })
-
-      console.log("datestring:", dateString);
 
       const daysUntilThisDay = Object.keys(dailyStats).length
       let totalCaffeineUntilThisDay = 0
