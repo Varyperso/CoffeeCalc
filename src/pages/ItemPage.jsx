@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useItemsData, useUserData } from '../context'
 import CardItem from '../Components/Store/CardItem'

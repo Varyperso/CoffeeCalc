@@ -252,7 +252,6 @@ export function calculateCurrentCaffeineLevel(historyData, halfLifeHours, timeNo
   for (const [timestamp, entry] of Object.entries(historyData)) {
     const timeElapsed = timeNow - parseInt(timestamp)
 
-    // ignore entries older than 72 hours
     if (timeElapsed <= maxAge && timeElapsed > 0) {
       const caffeineInitial = getCaffeineAmount(entry.name) * entry.servingSize
       const remainingCaffeine = caffeineInitial * Math.pow(0.5, timeElapsed / halfLife) // half life function
@@ -389,7 +388,6 @@ export function calculateCoffeeStats(coffeeConsumptionHistory) {
         dailyStats[dateString].caffeine += caffeine
         dailyStats[dateString].cost += cost
         dailyStats[dateString].count += 1
-
       })
 
       const daysUntilThisDay = Object.keys(dailyStats).length
@@ -405,7 +403,6 @@ export function calculateCoffeeStats(coffeeConsumptionHistory) {
       dailyStats[dateString].avg_caffeine_per_cup = (totalCaffeineUntilThisDay / totalCoffeeCups).toFixed(2)
       dailyStats[dateString].avg_cost_per_day = (totalCostUntilThisDay / daysUntilThisDay).toFixed(2)
       dailyStats[dateString].avg_cost_per_cup = (totalCostUntilThisDay / totalCoffeeCups).toFixed(2)
-
     }
 
     currentDate.setDate(currentDate.getDate() + 1) // goto next day

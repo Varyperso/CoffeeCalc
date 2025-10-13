@@ -98,8 +98,6 @@ const HidePassword = ({ className }) => (
   </svg>
 )
 
-////
-
 const iconMap = {
   'chat-icon': ChatIcon,
   'settings-icon': SettingsIcon,

@@ -12,9 +12,7 @@
   font-size: 0.6em;
   color: var(--my-lightbrown);
 }
-.inputAndLabel__wrapper > input:not(:placeholder-shown) + label {
-  display: inline;
-}
+.inputAndLabel__wrapper > input:not(:placeholder-shown) + label { display: inline; }
 
 @keyframes textDecoration {
   0% {

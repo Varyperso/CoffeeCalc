@@ -33,8 +33,6 @@
   color: rgb(218, 133, 35);
 }
 
-.coffeeDescription:hover::after {
-}
+.coffeeDescription:hover::after {}
 
-.coffeeOptionsButton {
-}
+.coffeeOptionsButton {}

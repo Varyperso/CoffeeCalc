@@ -22,10 +22,6 @@
   transition: color 0.2s ease;
 }
 
-.starFilled {
-  color: yellow;
-}
+.starFilled { color: yellow; }
 
-.star:hover {
-  color: gold;
-}
+.star:hover { color: gold; }

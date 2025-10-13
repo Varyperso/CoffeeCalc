@@ -51,12 +51,8 @@
   font-size: 100%;
 }
 
-.expanded {
-  width: 16rem;
-}
-.collapsed {
-  width: 6rem;
-}
+.expanded { width: 16rem; }
+.collapsed { width: 6rem; }
 
 .sidebar li:last-child {
   margin-top: auto;
@@ -69,9 +65,5 @@
   color: var(--my-lightgreen);
 }
 
-.collapsed p svg:hover {
-  cursor: zoom-in;
-}
-.expanded p svg:hover {
-  cursor: zoom-out;
-}
+.collapsed p svg:hover { cursor: zoom-in; }
+.expanded p svg:hover { cursor: zoom-out; }

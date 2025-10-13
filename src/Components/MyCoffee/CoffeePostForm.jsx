@@ -4,12 +4,13 @@ import CoffeeDropdown from './CoffeeDropdown'
 import styles from './coffeepostform.module.css'
 import { useUserData } from '../../context/UserContext'
 import { myFetch } from '../../utils/myFetch'
+import { useUiData } from '../../context'
 //prettier-ignore
 const CoffeePostForm = ({ setCoffeeHistory }) => {
   const [selectedCoffee, setSelectedCoffee] = useState(null)
-  const [error, setError] = useState('')
 
   const { user } = useUserData()
+  const { error, setError } = useUiData()
 
   const newCoffeeDataEntry = useRef({ servingSize: '', cost: '', mood: '', location: '', hours: '', minutes: '' })
 
@@ -47,7 +48,6 @@ const CoffeePostForm = ({ setCoffeeHistory }) => {
     setCoffeeHistory(prev => ({...prev, ...newCoffeeData }))
   }
 
-  
   return (
     <>
       <form onSubmit={handleSubmitForm} style={{ border: "3px solid var(--my-darkpink)"}}>
@@ -91,7 +91,7 @@ const CoffeePostForm = ({ setCoffeeHistory }) => {
         <Button type="submit"> Submit </Button>
         <Button type="reset"> Reset </Button>
       </form>
-      <div style={{color: "red"}}> {error} </div>
+      <div style={{ color: "red" }}> {error} </div>
     </>
   )
 }

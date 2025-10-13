@@ -19,7 +19,7 @@ function CoffeeInfoTable() {
         .then(response => response.text())
         .then(data => {
           Papa.parse(data, {
-            header: true, // true = remove the header
+            header: true, // the first row will be the keys in the eventual JS objects of all other rows that come after it in the original CSV
             dynamicTyping: true, // try to parse values as their type(number, bool)
             complete: result => {
               const transformedData = result.data.map(row => {

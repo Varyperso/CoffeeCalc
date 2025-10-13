@@ -1,6 +1,3 @@
-/* CSS Reset for Responsive Design */
-
-/* Box sizing */
 *,
 *::before,
 *::after {
@@ -9,36 +6,27 @@
   padding: 0;
 }
 
-html {
-  font-size: 62.5%; /* make font size 10 px for easier calculations */
-}
+html {font-size: 62.5%; }
 
-/* Remove list styles */
 ul,
-ol {
-  list-style: none;
-}
+ol { list-style: none; }
 
-/* Reset images */
 img {
   max-width: 100%; /* Make images responsive */
   height: auto; /* Maintain aspect ratio */
   display: block; /* Prevent bottom space in images */
 }
 
-/* Anchor tags */
 a {
   text-decoration: none; /* Remove underline from links */
   color: inherit; /* Inherit color from parent */
 }
 
-/* Tables */
 table {
   border-collapse: collapse; /* Remove spacing */
   width: 100%; /* Make tables responsive */
 }
 
-/* Make sure elements behave as expected in responsive contexts */
 input,
 textarea,
 select,

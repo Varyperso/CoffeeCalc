@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styles from './coffeedropdown.module.css'
 import Button from '../UI/Button'
 import { coffeeOptions } from '../../utils/index'
@@ -19,9 +19,7 @@ const CoffeeDropdown = ({ selectedCoffee, setSelectedCoffee }) => {
           <div className={styles.dropdownPopup}>
             {coffeeOptions.map(option => (
               <div key={option.name} className={styles.dropdownItem} onClick={() => selectOption(option)}>
-                <span data-description={option.description} className={styles.coffeeDescription} tabIndex="1">
-                  ?
-                </span>
+                <span data-description={option.description} className={styles.coffeeDescription} tabIndex="1">?</span>
                 <span>{option.name}</span>
                 <span>{option.caffeine}mg</span>
               </div>

@@ -11,8 +11,7 @@ router.get('/:id', verifyToken, async (req, res) => {
     coffeeHistory.save()
     res.status(200).json(coffeeHistory)
   } catch (error) {
-    console.error('Error fetching Coffee History:', error)
-    res.status(500).json({ error: 'Internal server error' })
+    res.status(500).json({ message: 'Internal server error' })
   }
 })
 
@@ -29,8 +28,7 @@ router.post('/:id', verifyToken, async (req, res) => {
     await coffeeHistoryDoc.save()
     res.status(200).send('Coffee entry added')
   } catch (error) {
-    console.error('Error fetching Coffee History:', error)
-    res.status(500).json({ error: 'Internal server error' })
+    res.status(500).json({ message: 'Internal server error' })
   }
 })
 
@@ -43,8 +41,7 @@ router.delete('/:id', verifyToken, async (req, res) => {
     await coffeeHistoryDoc.save()
     res.status(200).send('Coffee entry added')
   } catch (error) {
-    console.error('Error fetching Coffee History:', error)
-    res.status(500).json({ error: 'Internal server error' })
+    res.status(500).json({ message: 'Internal server error' })
   }
 })
 

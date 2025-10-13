@@ -1,5 +1,5 @@
 import AddItem from '../Components/Store/AddItem'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Svgs from '../svg/Svgs'
 import { myFetch } from '../utils/myFetch'
 import Button from '../Components/UI/Button'

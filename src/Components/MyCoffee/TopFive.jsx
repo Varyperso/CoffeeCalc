@@ -1,4 +1,3 @@
-import React from 'react'
 import { getTopFiveCoffees } from '../../utils'
 export const TopFive = ({ coffeeHistory }) => {
   const topFiveCoffees = getTopFiveCoffees(coffeeHistory)

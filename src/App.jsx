@@ -21,7 +21,6 @@ const CoffeeWorld = React.lazy(() => import('./pages/CoffeeWorld.jsx'))
 
 // prettier-ignore
 function App() {
-
   const [loggedIn, setLoggedIn] = useState(() => {
     const storedLoginStatus = localStorage.getItem("isLoggedIn");
     return storedLoginStatus === "true";

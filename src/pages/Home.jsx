@@ -7,8 +7,6 @@ export default function Home() {
   const lastLoginDate = new Date(user.lastLogin)
   lastLoginDate.setHours(lastLoginDate.getHours() + 2)
 
-  console.log(user)
-
   // prettier-ignore
   return (
     <>

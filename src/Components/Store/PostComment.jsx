@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useUserData } from '../../context/UserContext'
 import { myFetch } from '../../utils/myFetch'
 import Button from '../UI/Button'
 import StarsCommentRating from '../UI/StarsCommentRating'
 import styles from './postcomment.module.css'
+import { useUiData } from '../../context'
 
 //prettier-ignore
 const PostComment = ({ itemId, setItems }) => {
   const [comment, setComment] = useState('')
   const [rating, setRating] = useState(1)
-  const [error, setError] = useState("")
-  const [success, setSuccess] = useState("")
+  const [success, setSuccess] = useState('')
 
   const { user } = useUserData()
+  const { error, setError } = useUiData()
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -23,27 +24,25 @@ const PostComment = ({ itemId, setItems }) => {
       return
     }
 
-    const commentData = {
-      userId: user._id,
-      comment,
-      rating
-    }
+    const commentData = { userId: user._id, comment, rating }
     
     let result = await myFetch({url :`https://localhost:5000/items/${itemId}/comments`, method: 'POST', data: commentData })
-    if (result.error) {
-      setError(result.error)
+    if (result.message) {
+      setError(result.message)
       setTimeout(() => setError(""), 2500)
+      return;
     } 
-    else {
-      setSuccess('Comment posted successfully!')
-      setTimeout(() => setSuccess(""), 2500)
-      const itemsFetched = await myFetch({ url: 'https://localhost:5000/items' }) // fetch items from the server to see item updates (just refreshing the page will use localhost items)
-      setItems(itemsFetched)
-      localStorage.setItem('items', JSON.stringify(itemsFetched))
-      setComment('')
-      setRating(1)
-      setError("")
-    }
+    
+    setSuccess('Comment posted successfully!')
+    setTimeout(() => setSuccess(""), 2500)
+    const itemsFetched = await myFetch({ url: 'https://localhost:5000/items' }) // fetch items from the server to see item updates (just refreshing the page will use localhost items)
+    console.log("items fetched", itemsFetched);
+    
+    setItems(itemsFetched)
+    localStorage.setItem('items', JSON.stringify(itemsFetched))
+    setComment('')
+    setRating(1)
+    setError('')
   }
 
   return (

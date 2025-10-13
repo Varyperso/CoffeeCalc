@@ -2,15 +2,14 @@ import { NavLink } from 'react-router-dom'
 import styles from './navbar.module.css'
 import Button from './Button'
 import { useUserData } from '../../context'
-import { useEffect, useRef } from 'react'
-import { myFetch } from '../../utils/myFetch'
+import handleInactivity from '../../utils/handleInactivity'
 
 // prettier-ignore
 export default function Navbar() {
 
   const { handleLogout } = useUserData()
 
-  handleInactivity()
+  handleInactivity() // token refresh
  
   return (
     <> 
@@ -38,52 +37,4 @@ export default function Navbar() {
       </nav>
     </>
   );
-}
-
-const handleInactivity = () => {
-  const timeoutRef = useRef(null)
-  const timeoutDuration = 120 * 60 * 1000 // 2 hours per session
-  const { handleLogout } = useUserData()
-
-  const refreshToken = async () => {
-    try {
-      await myFetch({ url: `https://localhost:5000/refresh-token`, method: 'POST' })
-    } catch (error) {
-      console.error('Error refreshing token:', error)
-    }
-  }
-
-  const handleUserActivity = () => {
-    const currentTime = Date.now()
-    clearTimeout(timeoutRef.current)
-
-    refreshToken()
-    localStorage.setItem('lastActivityTime', currentTime.toString())
-    startInactivityTimer()
-  }
-
-  const startInactivityTimer = () => {
-    timeoutRef.current = setTimeout(() => {
-      console.log('Token expired due to inactivity')
-      handleLogout()
-    }, timeoutDuration)
-  }
-
-  useEffect(() => {
-    const lastActivityTime = localStorage.getItem('lastActivityTime')
-    const currentTime = Date.now()
-    if (lastActivityTime) {
-      const timeSinceLastActivity = currentTime - parseInt(lastActivityTime, 10)
-      if (timeSinceLastActivity > timeoutDuration) handleLogout()
-    }
-
-    document.addEventListener('click', handleUserActivity)
-
-    return () => {
-      document.removeEventListener('click', handleUserActivity)
-      clearTimeout(timeoutRef.current)
-    }
-  }, [])
-
-  return null
 }

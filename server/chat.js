@@ -1,4 +1,3 @@
-require('dotenv').config()
 const mongoose = require('mongoose')
 const WebSocket = require('ws')
 const PrivateMessage = require('./models/PrivateMessage')

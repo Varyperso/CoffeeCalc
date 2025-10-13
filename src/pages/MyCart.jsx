@@ -26,8 +26,7 @@ export default function MyCart() {
     if (!itemsToPurchase.length) return
 
     const result = await myFetch({ url: `https://localhost:5000/purchase/${user._id}`, method: 'POST', data: itemsToPurchase })
-    if (result.error)
-      setMessage('error', result.error) // if some/all items were cancelled
+    if (result.message) setMessage('error', result.message) // if some/all items were cancelled
     else setMessage('purchased')
 
     const userData = await myFetch({ url: `https://localhost:5000/user/${user._id}` }) // renew user data to update previous purchases

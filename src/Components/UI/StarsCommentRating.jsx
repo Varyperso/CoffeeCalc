@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './starscommentrating.module.css'
 
 const StarsCommentRating = ({ rating, setRating }) => {

@@ -1,5 +1,5 @@
 const cookieParser = require('cookie-parser')
-require('dotenv').config()
+
 const fs = require('fs')
 const express = require('express')
 const https = require('https')
@@ -23,13 +23,13 @@ const MONGO_URI = process.env.MONGO_URI
 app.use(cookieParser())
 app.use(
   cors({
-    origin: 'https://localhost:3000',
-    credentials: true
+    origin: 'https://localhost:3000', // only allows connections from this address
+    credentials: true // allow the browser to send cookies or auth headers along with the request
   })
 )
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-// app.use(express.static(path.join(__dirname, 'build'))) for production
+app.use(express.urlencoded({ extended: true })) // no need, no x-www-form-urlencoded in this project..
+// app.use(express.static(path.join(__dirname, 'build'))) for serving in production
 app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use('/CoffeeInfoCSV', express.static(path.join(__dirname, 'coffeeInfoCSV')))
 

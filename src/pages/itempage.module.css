@@ -30,33 +30,15 @@
   margin-right: 3rem;
 }
 
-.rating1 {
-  color: red;
-}
+.rating1 { color: red; }
+.rating2 { color: orange; }
+.rating3 { color: yellow; }
+.rating4 { color: lightgreen; }
+.rating5 { color: green; }
 
-.rating2 {
-  color: orange;
-}
+.avatar { margin-left: 1rem; }
 
-.rating3 {
-  color: yellow;
-}
-
-.rating4 {
-  color: lightgreen;
-}
-
-.rating5 {
-  color: green;
-}
-
-.avatar {
-  margin-left: 1rem;
-}
-
-.user__name {
-  color: var(--my-text-lightgreen);
-}
+.user__name { color: var(--my-text-lightgreen); }
 
 .deleteComment {
   position: absolute;
@@ -68,6 +50,4 @@
   cursor: pointer;
   color: brown;
 }
-.deleteComment:hover {
-  color: red;
-}
+.deleteComment:hover { color: red; }

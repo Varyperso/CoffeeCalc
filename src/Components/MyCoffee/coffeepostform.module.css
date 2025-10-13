@@ -4,13 +4,9 @@
   align-items: center;
   justify-content: center;
 }
-.inputs__wrapper > div {
-  position: relative;
-}
+.inputs__wrapper > div { position: relative; }
 
-.inputs__wrapper > div > *:not(button) {
-  margin-top: 1em;
-}
+.inputs__wrapper > div > *:not(button) { margin-top: 1em; }
 .inputs__wrapper > div > label {
   display: none;
   position: absolute;
@@ -21,9 +17,5 @@
 }
 
 .inputs__wrapper > div > input:not(:placeholder-shown) + label,
-.inputs__wrapper > div > textarea:not(:placeholder-shown) + label {
-  display: block;
-}
-.inputs__wrapper > div > input[type='number'] {
-  width: 10.7rem;
-}
+.inputs__wrapper > div > textarea:not(:placeholder-shown) + label { display: block; }
+.inputs__wrapper > div > input[type='number'] { width: 10.7rem; }

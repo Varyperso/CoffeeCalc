@@ -32,9 +32,5 @@
   margin: 0;
 }
 
-.small {
-  width: 24px;
-}
-.blue {
-  color: var(--my-blue);
-}
+.small { width: 24px; }
+.blue { color: var(--my-blue); }

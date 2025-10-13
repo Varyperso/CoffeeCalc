@@ -1,4 +1,3 @@
-require('dotenv').config()
 const jwt = require('jsonwebtoken')
 const express = require('express')
 const router = express.Router()
@@ -17,10 +16,7 @@ const regexPassword = /^(?=[A-Za-z0-9]*[A-Z])(?=[A-Za-z0-9]*[0-9])[A-Za-z0-9]{8,
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
-  auth: {
-    user: 'varyperso1@gmail.com',
-    pass: process.env.EMAIL_PW
-  }
+  auth: { user: 'varyperso1@gmail.com', pass: process.env.EMAIL_PW }
 })
 
 router.post('/register', async (req, res) => {
@@ -43,13 +39,8 @@ router.post('/register', async (req, res) => {
       text: `Your verification code is: ${verificationCode}`
     })
 
-    return res.status(201).json({
-      message: 'Please check your email for the verification code.',
-      email,
-      isVerified: false
-    })
+    return res.status(201).json({ email, isVerified: false })
   } catch (error) {
-    console.error('Error during registration:', error)
     return res.status(500).json({ message: 'Internal server error' })
   }
 })
@@ -78,21 +69,17 @@ router.post('/verify', async (req, res) => {
       const token = generateToken(newUser)
 
       res.cookie('authToken', token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production', // changes to true in production
+        httpOnly: true, // javascript on the client cant read the cookie, its send only via http requests
+        secure: process.env.NODE_ENV === 'production', // changes to true in production, only send via https in production
         maxAge: 120 * 60 * 1000, // 2 hours
-        sameSite: 'Strict'
+        sameSite: 'Strict' // only sends the cookie from this address
       })
 
-      return res.status(200).json({
-        message: 'Email verified and user successfully registered.',
-        _id: newUser._id
-      })
+      return res.status(200).json({ _id: newUser._id })
     } else {
       return res.status(400).json({ message: 'Invalid verification code' })
     }
   } catch (error) {
-    console.error('Error during verification:', error)
     return res.status(500).json({ message: 'Internal server error' })
   }
 })
@@ -116,13 +103,9 @@ router.post('/login', async (req, res) => {
         sameSite: 'Strict' // protects from csrf
       })
 
-      return res.json({
-        message: 'login successful',
-        _id: existingUser._id
-      })
-    } else return res.status(401).json({ error: 'invalid credentials' })
+      return res.json({ _id: existingUser._id })
+    } else return res.status(401).json({ message: 'invalid credentials' })
   } catch (error) {
-    console.error('Error during login:', error)
     return res.status(500).json({ message: 'Internal server error' })
   }
 })
@@ -146,9 +129,8 @@ router.post('/forgot-password', async (req, res) => {
       text: `Click this link to reset your password: https://localhost:3000/reset-password?token=${resetToken}`
     })
 
-    res.status(200).json({ success: true, message: 'Reset link sent to your email.' })
+    res.sendStatus(200)
   } catch (error) {
-    console.error('Error during password reset:', error)
     res.status(500).json({ message: 'Internal server error.' })
   }
 })
@@ -167,9 +149,8 @@ router.post('/reset-password', async (req, res) => {
     user.resetTokenExpiration = undefined
     await user.save()
 
-    res.status(200).json({ message: 'Password successfully reset.' })
+    res.sendStatus(200)
   } catch (error) {
-    console.error('Error during password reset:', error)
     res.status(500).json({ message: 'Internal server error.' })
   }
 })
@@ -177,12 +158,12 @@ router.post('/reset-password', async (req, res) => {
 router.post('/refresh-token', (req, res) => {
   const refreshToken = req.cookies.authToken
 
-  if (!refreshToken) return res.status(401).json({ error: 'No refresh token provided' })
+  if (!refreshToken) return res.status(401).json({ message: 'No refresh token provided' })
 
   jwt.verify(refreshToken, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
       res.clearCookie('authToken')
-      return res.status(401).json({ error: 'Invalid or expired refresh token' })
+      return res.status(401).json({ message: 'Invalid or expired refresh token' })
     }
 
     const newAccessToken = generateToken(decoded)
@@ -190,10 +171,11 @@ router.post('/refresh-token', (req, res) => {
     res.cookie('authToken', newAccessToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production', // false for now
-      maxAge: 120 * 60 * 1000 // 2 hours
+      maxAge: 120 * 60 * 1000, // 2 hours
+      sameSite: 'Strict' // protects from csrf
     })
 
-    return res.status(200).json({ message: 'Token refreshed' })
+    return res.sendStatus(200)
   })
 })
 

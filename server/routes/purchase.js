@@ -12,7 +12,7 @@ router.post('/purchase/:id', verifyToken, async (req, res) => {
   let validPurchasedItems = []
   try {
     const userToAddTheItemsTo = await User.findById(userId)
-    if (!userToAddTheItemsTo) return res.status(404).json({ error: 'User not found' })
+    if (!userToAddTheItemsTo) return res.status(404).json({ message: 'User not found' })
     for (let purchasedItem of purchasedItems) {
       const itemToUpdate = await Item.findById(purchasedItem._id)
       if (itemToUpdate.quantityLeft < purchasedItem.quantity) {
@@ -29,11 +29,10 @@ router.post('/purchase/:id', verifyToken, async (req, res) => {
     }
     userToAddTheItemsTo.purchasedItems.push(...validPurchasedItems)
     await userToAddTheItemsTo.save()
-    if (errorItemsArr.length) return res.status(206).json({ purchasedItems: validPurchasedItems, error: errorItemsArr })
+    if (errorItemsArr.length) return res.status(206).json({ purchasedItems: validPurchasedItems, message: errorItemsArr })
     return res.status(201).json(validPurchasedItems)
   } catch (error) {
-    console.error('Error processing purchase:', error)
-    return res.status(500).json({ error: 'Internal server error' })
+    return res.status(500).json({ message: 'Internal server error' })
   }
 })
 

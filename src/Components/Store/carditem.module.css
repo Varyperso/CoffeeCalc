@@ -39,9 +39,7 @@
   display: flex;
   font-size: 1.8rem;
 }
-.price {
-  margin-left: 0.5rem;
-}
+.price { margin-left: 0.5rem; }
 .quantityLeft {
   margin-left: auto;
   margin-right: 0.5rem;
@@ -52,9 +50,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.quantity__wrapper > input {
-  min-width: 6em;
-}
+.quantity__wrapper > input { min-width: 6em; }
 .card__quantity {
   position: relative;
   display: inline;
@@ -71,6 +67,4 @@
   line-height: 1.2;
   margin-left: 1rem;
 }
-.specialStar {
-  top: -0.2rem;
-}
+.specialStar { top: -0.2rem; }

@@ -19,9 +19,7 @@ input[type='radio'] {
   width: 1.2rem;
   margin: 0.4rem;
 }
-input[type='radio']:hover {
-  transform: scale(1.1);
-}
+input[type='radio']:hover { transform: scale(1.1); }
 
 datalist {
   position: relative;

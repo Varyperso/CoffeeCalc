@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+
 const chatMessageSchema = new mongoose.Schema({
   userId: { type: String, required: true },
   message: { type: String, required: true },
@@ -6,4 +7,5 @@ const chatMessageSchema = new mongoose.Schema({
 })
 
 const ChatMessage = mongoose.model('Message', chatMessageSchema)
+
 module.exports = ChatMessage

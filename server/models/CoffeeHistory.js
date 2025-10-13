@@ -16,4 +16,5 @@ const coffeeHistorySchema = new mongoose.Schema({
 })
 
 const CoffeeHistory = mongoose.model('CoffeeHistory', coffeeHistorySchema)
+
 module.exports = CoffeeHistory

@@ -1,4 +1,4 @@
-import { useItemsData, useUserData } from '../../context'
+import { useItemsData, useUiData, useUserData } from '../../context'
 import { useRef, useState } from 'react'
 import { myFetch } from '../../utils/myFetch'
 import Button from '../UI/Button'
@@ -6,10 +6,10 @@ import Button from '../UI/Button'
 //prettier-ignore
 export default function AddItem() {
   const [selectedFile, setSelectedFile] = useState(null)
-  const [error, setError] = useState('')
 
   const { setItems } = useItemsData()
   const { user } = useUserData()
+  const { error, setError } = useUiData()
 
   const addItemRef = useRef({ newName: '', newQuantity: '', newPrice: '', newDescription: '' })
 
@@ -21,8 +21,7 @@ export default function AddItem() {
     e.preventDefault()
 
     if (!selectedFile) {
-      setError("must include picture")
-      return
+      setError("must include picture"); return
     }
 
     const formData = new FormData() 
@@ -41,7 +40,7 @@ export default function AddItem() {
       localStorage.setItem('items', JSON.stringify(itemsFetched))
     } 
     catch(e) {
-      setError(e.error)
+      setError(e.message)
       setTimeout(() => setError(''), 2000)
     }
   }

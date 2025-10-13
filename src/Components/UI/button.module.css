@@ -18,9 +18,7 @@
   border: none;
   color: var(--my-purple);
 }
-.logoutButton:hover {
-  color: var(--my-darkred);
-}
+.logoutButton:hover { color: var(--my-darkred); }
 
 .btn:hover {
   color: var(--my-turquise);

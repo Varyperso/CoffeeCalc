@@ -9,22 +9,22 @@ const User = require('../models/User')
 
 router.post('/items/:id/comments', verifyToken, async (req, res) => {
   const itemId = req.params.id
-  if (!mongoose.Types.ObjectId.isValid(itemId)) return res.status(400).json({ error: 'Invalid item ID format' })
+  if (!mongoose.Types.ObjectId.isValid(itemId)) return res.status(400).json({ message: 'Invalid item ID format' })
   const { userId, comment, rating } = req.body
-  if (!comment || !rating || rating < 1 || rating > 5) return res.status(400).json({ error: 'Invalid comment or rating' })
+  if (!comment || !rating || rating < 1 || rating > 5) return res.status(400).json({ message: 'Invalid comment or rating' })
 
   try {
     const item = await Item.findById(itemId)
-    if (!item) return res.status(404).json({ error: 'Item not found' })
+    if (!item) return res.status(404).json({ message: 'Item not found' })
     const user = await User.findById(userId)
-    if (!user) return res.status(404).json({ error: 'User not found' })
+    if (!user) return res.status(404).json({ message: 'User not found' })
 
     if (user.purchasedItems.filter(purchasedItem => purchasedItem.item.toString() === item._id.toString()).length === 0) {
-      return res.status(400).json({ error: 'User must buy the product before commenting on it' })
+      return res.status(400).json({ message: 'User must buy the product before commenting on it' })
     }
 
     if (item.comments.filter(comment => comment.userId.toString() === userId.toString()).length >= 1) {
-      return res.status(400).json({ error: '1 Comment per product' })
+      return res.status(400).json({ message: '1 Comment per product' })
     }
 
     item.comments.push({
@@ -40,24 +40,24 @@ router.post('/items/:id/comments', verifyToken, async (req, res) => {
     item.averageRating = averageRating
 
     await item.save()
-    res.status(200).json({ message: 'success', data: item })
+    res.status(200).json({ data: item })
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' })
+    res.status(500).json({ message: 'Internal server error' })
   }
 })
 
 router.delete('/items/:id/comments', verifyToken, async (req, res) => {
   const itemId = req.params.id
-  if (!mongoose.Types.ObjectId.isValid(itemId)) return res.status(400).json({ error: 'Invalid item ID format' })
+  if (!mongoose.Types.ObjectId.isValid(itemId)) return res.status(400).json({ message: 'Invalid item ID format' })
 
   const { userId, commentId, admin } = req.body
-  if (!userId || !commentId) return res.status(400).json({ error: 'User ID and Comment ID are required' })
+  if (!userId || !commentId) return res.status(400).json({ message: 'User ID and Comment ID are required' })
 
   async function deleteComment() {
     const item = await Item.findById(itemId)
-    if (!item) return res.status(404).json({ error: 'Item not found' })
+    if (!item) return res.status(404).json({ message: 'Item not found' })
     const comment = item.comments.id(commentId)
-    if (!comment) return res.status(404).json({ error: 'Comment not found' })
+    if (!comment) return res.status(404).json({ message: 'Comment not found' })
 
     if (admin || String(comment.userId) === String(userId)) {
       item.comments.pull(commentId)
@@ -69,9 +69,9 @@ router.delete('/items/:id/comments', verifyToken, async (req, res) => {
       } else item.averageRating = 0
 
       await item.save()
-      return res.status(200).json({ message: 'Comment deleted successfully' })
+      return res.sendStatus(201)
     } else {
-      return res.status(403).json({ error: 'You are not authorized to delete this comment' })
+      return res.status(403).json({ message: 'You are not authorized to delete this comment' })
     }
   }
 
@@ -86,8 +86,7 @@ router.delete('/items/:id/comments', verifyToken, async (req, res) => {
       })
     } else deleteComment()
   } catch (error) {
-    console.error('Error deleting comment:', error)
-    res.status(500).json({ error: 'Internal server error' })
+    res.status(500).json({ message: 'Internal server error' })
   }
 })
 

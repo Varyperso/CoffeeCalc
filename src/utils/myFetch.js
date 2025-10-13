@@ -3,29 +3,24 @@ const loadFromLocalStorage = (dataType, returnIfEmpty) => {
   return storedData ? JSON.parse(storedData) : returnIfEmpty
 }
 // prettier-ignore
-const myFetch = async ({ url, method = 'GET', data = null, contentType='application/json'}) => {
+const myFetch = async ({ url, method = 'GET', data = null, contentType='application/json' }) => {
   try {
-    const options = {
-      method: method,
-      credentials: 'include'
-    };
+    const options = { method: method, credentials: 'include' };
 
     if (method !== 'GET' && data) {
       if (data instanceof FormData) {
         options.body = data;
       } else {
         options.body = JSON.stringify(data);
-        options.headers = {
-          'Content-Type': contentType
-        };
+        options.headers = { 'Content-Type': contentType };
       }
     }
 
     const response = await fetch(url, options);
     if (!response.ok) {
-      console.log('fetch response not ok');
+      console.log(`fetch response ${method} to ${url} not ok`);
       const errorData = await response.json();
-      throw new Error(errorData.error || 'Unknown error occurred');
+      throw new Error(errorData.message || 'Unknown error occurred');
     }
 
     const contentTypeReturned = response.headers.get('content-type');
@@ -36,7 +31,7 @@ const myFetch = async ({ url, method = 'GET', data = null, contentType='applicat
     return result;
   } catch (error) {
     console.error('Error in fetch request:', error);
-    return { error: error.message };
+    return { message: error.message };
   }
 }
 

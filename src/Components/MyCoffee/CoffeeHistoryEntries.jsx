@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getTimeSinceConsumption } from '../../utils'
 import { useUserData } from '../../context/UserContext'
 import { myFetch } from '../../utils/myFetch'
@@ -23,9 +23,7 @@ export const CoffeeHistoryEntries = ({ coffeeHistory, setCoffeeHistory }) => {
           <div key={time}>
             <div style={{ textAlign: 'left' }}>
               {getTimeSinceConsumption(time)} --- {entry.name}
-              <span className="deleteCoffeeEntry" onClick={() => handleDeleteEntry(time)}>
-                X
-              </span>
+              <span className="deleteCoffeeEntry" onClick={() => handleDeleteEntry(time)}>X</span>
             </div>
           </div>
         ))

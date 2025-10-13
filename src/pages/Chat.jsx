@@ -9,7 +9,6 @@ import { useUsersData } from '../context/UsersContext'
 
 //prettier-ignore
 export default function Chat() {
-
   const [toggle, setToggle] = useState(false); // toggle = chat sidebar width
   const [messages, setMessages] = useState([]); // all messages in chat
   const [privateChat, setPrivateChat] = useState(null); // the user we are chatting with
@@ -112,8 +111,6 @@ export default function Chat() {
   useEffect(() => {
     if (containerRef.current) containerRef.current.scrollTop = containerRef.current.scrollHeight;
   }, [messages]);
-
-  console.log(messages);
   
   let privateChatWith;
   if (privateChat) privateChatWith = users.find((user) => privateChat === user._id)
@@ -128,7 +125,7 @@ export default function Chat() {
         <button type="button" onClick={resizeHandler}>
           { toggle ? <Svgs name="leftSidebarChat-icon"/> : <Svgs name="rightSidebarChat-icon"/> }
         </button> <br />
-        {users?.map((user) => <UserCard key={user._id} toggle={toggle} user={user} chat={startPrivateChat} /> )}
+        {users?.map((u) => user._id !== u._id && <UserCard key={u._id} toggle={toggle} user={u} chat={startPrivateChat} /> )}
       </aside>
       <main className={styles.gridMain} ref={containerRef}>
       {messages.map((msg) => {

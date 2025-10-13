@@ -1,5 +1,4 @@
 // demo coffee history insert for testing
-require('dotenv').config()
 const mongoose = require('mongoose')
 const CoffeeHistory = require('./models/CoffeeHistory')
 
@@ -58,6 +57,5 @@ mongoose
     mongoose.disconnect() // Disconnect after updates
   })
   .catch(err => {
-    console.error('Error connecting to MongoDB', err)
     mongoose.disconnect() // Ensure disconnect in case of error
   })

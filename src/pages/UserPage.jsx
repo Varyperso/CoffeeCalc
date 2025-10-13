@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { myFetch } from '../utils/myFetch'
 
@@ -19,8 +19,6 @@ const UserPage = () => {
 
   const lastLoginDate = new Date(pageUser.lastLogin)
   lastLoginDate.setHours(lastLoginDate.getHours() + 2)
-
-  console.log(pageUser)
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>

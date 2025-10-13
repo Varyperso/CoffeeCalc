@@ -1,4 +1,3 @@
-import React from 'react'
 import { TopFive } from './TopFive'
 import { CoffeeHistoryEntries } from './CoffeeHistoryEntries'
 

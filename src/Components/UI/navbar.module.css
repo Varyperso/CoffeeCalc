@@ -20,9 +20,7 @@
   font-weight: 600;
   height: 100%;
 }
-.navli .active {
-  color: var(--my-red);
-}
+.navli .active { color: var(--my-red); }
 
 .nav ul li a {
   position: relative;
@@ -53,9 +51,7 @@
   transition: width 0.3s ease;
 }
 
-.nav ul li a:hover::after {
-  width: 100%;
-}
+.nav ul li a:hover::after { width: 100%; }
 
 .siteTitle {
   position: relative;

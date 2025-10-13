@@ -3,6 +3,4 @@
   margin-inline: 1rem;
 }
 
-.table__wrapper {
-  overflow-x: auto;
-}
+.table__wrapper { overflow-x: auto; }
