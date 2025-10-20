@@ -43,7 +43,7 @@ app.use('/WorldCoffeeInfo', worldCoffeeRoutes)
 app.use('/UserCoffeeHistory', userCoffeeHistoryRoutes)
 
 const options = {
-  key: fs.readFileSync('../key.pem'), // ssl stuff
+  key: fs.readFileSync('../key.pem'), // ssl stuff for https
   cert: fs.readFileSync('../cert.pem')
 };
 
