@@ -1,7 +1,6 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useState } from 'react'
 
-const UsersContext = createContext()
-export const useUsersData = () => useContext(UsersContext)
+export const UsersContext = createContext()
 
 export const UserProviderUsers = ({ children }) => {
   const [users, setUsers] = useState([])

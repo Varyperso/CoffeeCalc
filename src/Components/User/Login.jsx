@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { myFetch } from '../../utils/myFetch'
-import { useUserData } from '../../context/UserContext'
+import { useUserData } from '../../context/'
 import styles from './login.module.css'
 import Button from '../UI/Button'
 import Svgs from '../../svg/Svgs'
@@ -155,7 +155,7 @@ const Login = ({ setLoggedIn }) => {
 
             <>
               <div className={styles.inputAndLabel__wrapper}>
-                <input aria-label='username' title='3-16 Characters. English only.' type='text' name='user' value={formInputs.user} onChange={handleInputChange} className={nameInputClassName} pattern={regexUsername.toString().slice(1, -1)} placeholder='Enter Username ' required />
+                <input aria-label='username' title='3-16 Characters. English only.' type='text' name='user' value={formInputs.user} onChange={handleInputChange} className={nameInputClassName} pattern={regexUsername.toString().slice(1, -1)} placeholder='Enter Username ' required autoFocus/>
                 <label> Username: </label>
               </div>
               <div className={styles.inputAndLabel__wrapper}>

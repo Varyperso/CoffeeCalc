@@ -4,8 +4,7 @@ import Svgs from '../svg/Svgs'
 import UserCard from '../Components/User/UserCard'
 import Button from '../Components/UI/Button'
 import { myFetch } from '../utils/myFetch'
-import { useUserData } from '../context/UserContext'
-import { useUsersData } from '../context/UsersContext'
+import { useUserData, useUsersData  } from '../context/'
 
 //prettier-ignore
 export default function Chat() {
@@ -118,7 +117,7 @@ export default function Chat() {
   return (
     <div className={`${styles.parentGrid} ${toggle && styles.resize}`} >
       <header className={styles.gridHeader}>
-       <h2 style={{fontSize:"1.75rem", marginTop: "1rem" }}> {privateChat ? <> Chatting With <span style={{ color: "var(--my-purple)", fontSize: "2.5rem" }}> {privateChatWith.user} </span> </> : "Global Chat Room" } </h2>
+        <h2 style={{fontSize:"1.75rem", marginTop: "1rem" }}> {privateChat ? <> Chatting With <span style={{ color: "var(--my-purple)", fontSize: "2.5rem" }}> {privateChatWith.user} </span> </> : "Global Chat Room" } </h2>
       </header>
       <aside className={styles.gridSidebar}>
         <div className={styles.logo}> <Svgs name="chatUsers-icon"/> </div>
@@ -128,22 +127,22 @@ export default function Chat() {
         {users?.map((u) => user._id !== u._id && <UserCard key={u._id} toggle={toggle} user={u} chat={startPrivateChat} /> )}
       </aside>
       <main className={styles.gridMain} ref={containerRef}>
-      {messages.map((msg) => {
-        const chatUser = users.find(user => user._id === msg.userId);
-        return (
-          <div key={msg._id} className={styles.chat__line}>
-            {chatUser && <img src={chatUser.avatar} alt="User Avatar" className={styles.chat__image} />}
-            <strong className={msg.userId === user._id ? styles.chat__username__me : styles.chat__username}> {chatUser?.user} </strong>: {msg.message}
-          </div>
-        );
-      })}
+        {messages.map((msg) => {
+          const chatUser = users.find(user => user._id === msg.userId);
+          return (
+            <div key={msg._id} className={styles.chat__line}>
+              {chatUser && <img src={chatUser.avatar} alt="User Avatar" className={styles.chat__image} />}
+              <strong className={msg.userId === user._id ? styles.chat__username__me : styles.chat__username}> {chatUser?.user} </strong>: {msg.message}
+            </div>
+          );
+        })}
       </main>
       <footer className={styles.gridFooter}>
-      <div className={styles.input__wrapper}>
-        <Button handler={sendMessage}> Send </Button>
-        <input type="text" ref={inputRef} onKeyDown={handleKeyPress} placeholder="message..." className={`input__one ${styles.chat__input}`}/>
-        <Button handler={backToGeneralChat}> Back To Global Chat </Button>
-      </div>
+        <div className={styles.input__wrapper}>
+          <Button handler={sendMessage}> Send </Button>
+          <input type="text" ref={inputRef} onKeyDown={handleKeyPress} placeholder="message..." className={`input__one ${styles.chat__input}`}/>
+          <Button handler={backToGeneralChat}> Back To Global Chat </Button>
+        </div>
       </footer>
     </div>
   );

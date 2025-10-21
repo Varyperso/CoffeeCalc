@@ -1,11 +1,9 @@
 import React, { Suspense } from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { UserProviderItems, UserProviderUser, UserProviderUsers, UserProviderUi } from './context/index.js'
 import Layout from './context/Layout.jsx'
 import Navbar from './Components/UI/Navbar.jsx'
 import Sidebar from './Components/UI/Sidebar.jsx'
-import Hero from './pages/Hero.jsx'
 import ProductList from './pages/ProductList.jsx'
 import MyCart from './pages/MyCart.jsx'
 import Chat from './pages/Chat.jsx'
@@ -14,6 +12,7 @@ import UserPage from './pages/UserPage.jsx'
 import Error404 from './pages/404.jsx'
 import ItemPage from './pages/ItemPage.jsx'
 
+import AuthRedirect from './Components/UI/AuthRedirect.jsx'
 import ResetPassword from './pages/ResetPassword.jsx'
 
 const CoffeeCalc = React.lazy(() => import('./pages/CoffeeCalc.jsx'))
@@ -21,28 +20,22 @@ const CoffeeWorld = React.lazy(() => import('./pages/CoffeeWorld.jsx'))
 
 // prettier-ignore
 function App() {
-  const [loggedIn, setLoggedIn] = useState(() => {
-    const storedLoginStatus = localStorage.getItem("isLoggedIn");
-    return storedLoginStatus === "true";
-  });
 
   return (
     <Router> 
       <UserProviderUi>
-        <UserProviderUser setLoggedIn={setLoggedIn} >
+        <UserProviderUser >
           <UserProviderItems>
             <UserProviderUsers>
-              { loggedIn &&
               <> 
-                <Navbar />  
-                <Sidebar /> 
-              </> }
+                <Navbar />
+                <Sidebar />
+              </> 
               <Suspense fallback={<div>Loading...</div>}>
                 <Routes>
-                  <Route path="/" element={loggedIn ? <Navigate to="/Home" /> : <Hero setLoggedIn={setLoggedIn} /> } />
+                  <Route path="/" element={ <AuthRedirect /> } />
                   <Route exact path="/reset-password" element={ <ResetPassword /> } />
                   <Route exact path="*" element={ <Error404 /> } />
-                  { loggedIn && 
                     <Route element={ <Layout /> }>
                       <Route exact path="/users/:user" element={ <UserPage />} />
                       <Route exact path="/items/:id" element={ <ItemPage />} />
@@ -52,7 +45,7 @@ function App() {
                       <Route exact path="/CoffeeCalc" element={ <CoffeeCalc /> } />
                       <Route exact path="/Chat" element={ <Chat /> } />
                       <Route exact path="/CoffeeWorld" element={ <CoffeeWorld /> }/>
-                    </Route> }
+                    </Route> 
                 </Routes>
               </Suspense>
             </UserProviderUsers>

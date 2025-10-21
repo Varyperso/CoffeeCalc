@@ -2,9 +2,8 @@ import { useRef, useState } from 'react'
 import Button from '../UI/Button'
 import CoffeeDropdown from './CoffeeDropdown'
 import styles from './coffeepostform.module.css'
-import { useUserData } from '../../context/UserContext'
 import { myFetch } from '../../utils/myFetch'
-import { useUiData } from '../../context'
+import { useUiData, useUserData } from '../../context'
 //prettier-ignore
 const CoffeePostForm = ({ setCoffeeHistory }) => {
   const [selectedCoffee, setSelectedCoffee] = useState(null)

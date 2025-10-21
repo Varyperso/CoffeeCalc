@@ -1,18 +1,21 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { loadFromLocalStorage, myFetch } from '../utils/myFetch'
 import { useNavigate } from 'react-router-dom'
-import { useUiData } from './UIContext'
+import { useUiData } from './'
 
-const UserContext = createContext()
-export const useUserData = () => useContext(UserContext)
+export const UserContext = createContext()
 
 //prettier-ignore
-export const UserProviderUser = ({ children, setLoggedIn }) => {
+export const UserProviderUser = ({ children }) => {
   const [user, setUser] = useState({});
+  const { setError } = useUiData()
 
   const navigate = useNavigate()
 
-  const { setError } = useUiData()
+  const [loggedIn, setLoggedIn] = useState(() => {
+    const storedLoginStatus = localStorage.getItem("isLoggedIn");
+    return storedLoginStatus === "true";
+  });
 
   const handleLogout = logout => {
     localStorage.removeItem('user');
@@ -21,6 +24,7 @@ export const UserProviderUser = ({ children, setLoggedIn }) => {
     setLoggedIn(false)
     setUser({})
     logout ? setError("logout") : setError("expired")
+    navigate('/404')
     setTimeout(() => {
       setError('')
       navigate('/')
@@ -39,5 +43,5 @@ export const UserProviderUser = ({ children, setLoggedIn }) => {
     validateUserOnRefresh()
   }, [])
  
-  return <UserContext.Provider value={{ user, setUser, handleLogout }}> {children} </UserContext.Provider>
+  return <UserContext.Provider value={{ loggedIn, setLoggedIn, user, setUser, handleLogout }}> {children} </UserContext.Provider>
 }

@@ -1,6 +1,7 @@
 import { useRef } from "react"
 import { useUserData } from "../context"
 import { useEffect } from "react"
+import { myFetch } from "./myFetch"
 
 export default function handleInactivity() {
   const timeoutRef = useRef(null)

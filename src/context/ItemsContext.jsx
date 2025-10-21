@@ -1,8 +1,8 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { loadFromLocalStorage, myFetch } from '../utils/myFetch'
 
-const ItemsContext = createContext()
-export const useItemsData = () => useContext(ItemsContext)
+export const ItemsContext = createContext()
+
 //prettier-ignore
 export const UserProviderItems = ({ children }) => {
 

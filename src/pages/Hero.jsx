@@ -1,9 +1,16 @@
 import Login from '../Components/User/Login'
 import styles from './hero.module.css'
 import Svgs from '../svg/Svgs'
+import { useUserData } from '../context'
+import { useNavigate } from 'react-router-dom'
 
 //prettier-ignore
-const Hero = ({ setLoggedIn }) => {
+const Hero = () => {
+  const { loggedIn, setLoggedIn } = useUserData()
+  
+  const navigate = useNavigate()
+
+  if (loggedIn) navigate("/Home")
 
   return (
     <>

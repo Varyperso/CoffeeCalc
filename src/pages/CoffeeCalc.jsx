@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import CoffeePostForm from '../Components/MyCoffee/CoffeePostForm'
 import { myFetch } from '../utils/myFetch'
-import { useUserData } from '../context/UserContext'
+import { useUserData } from '../context/'
 import styles from './coffeecalc.module.css'
 import CaffeineHistoryGraph from '../Components/MyCoffee/CaffeineHistoryGraph'
 import { HalfLifeBar } from '../Components/MyCoffee/HalfLifeBar'

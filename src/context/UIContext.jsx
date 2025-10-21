@@ -1,7 +1,6 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useState } from 'react'
 
-const UiContext = createContext()
-export const useUiData = () => useContext(UiContext)
+export const UiContext = createContext()
 
 export const UserProviderUi = ({ children }) => {
   const [isExpanded, setIsExpanded] = useState(false) // leftmost sidebar

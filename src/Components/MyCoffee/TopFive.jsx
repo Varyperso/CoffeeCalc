@@ -6,7 +6,7 @@ export const TopFive = ({ coffeeHistory }) => {
     <>
       {topFiveCoffees.length && (
         <table>
-          <caption>Top 5 Coffee Types</caption>
+          <caption style={{ marginBlock: '0.5rem' }}><u>Top 5 Coffee Types</u></caption>
           <thead>
             <tr>
               {Object.keys(topFiveCoffees[0]).map(objKey => (

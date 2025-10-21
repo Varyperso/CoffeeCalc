@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getTimeSinceConsumption } from '../../utils'
-import { useUserData } from '../../context/UserContext'
+import { useUserData } from '../../context/'
 import { myFetch } from '../../utils/myFetch'
 
 export const CoffeeHistoryEntries = ({ coffeeHistory, setCoffeeHistory }) => {
@@ -16,10 +16,13 @@ export const CoffeeHistoryEntries = ({ coffeeHistory, setCoffeeHistory }) => {
     setCoffeeHistory(updatedHistory)
   }
 
+  console.log(coffeeHistory);
+  
+
   useEffect(() => {
     if (Object.keys(coffeeHistory).length > 0) {
       setTimeSinceConsumption(
-        Object.entries(coffeeHistory).map(([time, entry]) => (
+        Object.entries(coffeeHistory).sort((a, b) => b[0] - a[0]).map(([time, entry]) => (
           <div key={time}>
             <div style={{ textAlign: 'left' }}>
               {getTimeSinceConsumption(time)} --- {entry.name}
@@ -30,9 +33,10 @@ export const CoffeeHistoryEntries = ({ coffeeHistory, setCoffeeHistory }) => {
       )
     }
   }, [coffeeHistory])
+  
   return (
     <>
-      <p style={{ textAlign: 'center' }}>Coffee History Entries</p>
+      <p style={{ textAlign: 'center', marginBlock: '0.5rem' }}><u>Coffee History Entries</u></p>
       <div style={{ maxHeight: '16rem', overflowY: 'scroll', border: '2px solid var(--my-darkpink)' }}>{timeSinceConsumption}</div>
     </>
   )

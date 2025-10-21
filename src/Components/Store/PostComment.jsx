@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import { useUserData } from '../../context/UserContext'
 import { myFetch } from '../../utils/myFetch'
 import Button from '../UI/Button'
 import StarsCommentRating from '../UI/StarsCommentRating'
 import styles from './postcomment.module.css'
-import { useUiData } from '../../context'
+import { useUiData, useUserData } from '../../context'
 
 //prettier-ignore
 const PostComment = ({ itemId, setItems }) => {

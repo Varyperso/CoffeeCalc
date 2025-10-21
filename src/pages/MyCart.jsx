@@ -1,6 +1,6 @@
 import Button from '../Components/UI/Button'
 import { myFetch } from '../utils/myFetch'
-import { useUserData } from '../context/UserContext'
+import { useUserData } from '../context/'
 import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import styles from './mycart.module.css'

@@ -6,10 +6,11 @@ import handleInactivity from '../../utils/handleInactivity'
 
 // prettier-ignore
 export default function Navbar() {
-
-  const { handleLogout } = useUserData()
+  const { loggedIn, handleLogout } = useUserData()
 
   handleInactivity() // token refresh
+
+  if (!loggedIn) return
  
   return (
     <> 

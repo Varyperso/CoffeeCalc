@@ -43,7 +43,7 @@ const ItemPage = () => {
               <UserCard key={comment.userId?._id} user={comment.userId} className={styles.avatar} />
               <p className={styles.user__name}> {comment.userId?.user}: </p>
               <p className={styles.user__comment}> {comment.comment} </p>
-              <p className={`${styles.user__rating}`}> <span style={{whiteSpace:'nowrap'}}> Rating: <span className={`${styles[`rating${comment.rating}`]}`}> {comment.rating} </span> </span></p>
+              <p className={`${styles.user__rating}`}> <span style={{ whiteSpace:'nowrap' }}> Rating: <span className={`${styles[`rating${comment.rating}`]}`}> {comment.rating} </span> </span></p>
               {(comment.userId._id === user._id || user.admin) && <button onClick={() => onDelete(comment._id)} className={styles.deleteComment}> X </button>}
             </div>
           </div>

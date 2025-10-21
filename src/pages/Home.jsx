@@ -1,4 +1,4 @@
-import { useUserData } from '../context/UserContext'
+import { useUserData } from '../context/'
 import UpdateUser from '../Components/User/UpdateUser'
 
 export default function Home() {

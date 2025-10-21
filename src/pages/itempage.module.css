@@ -20,6 +20,7 @@
   margin: 0.5rem;
   border: 0.25rem solid rgb(9, 27, 61);
   border-radius: 8px;
+  text-align: left;
 }
 .product__comment > * {
   margin-block: 1rem;

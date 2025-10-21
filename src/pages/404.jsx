@@ -1,16 +1,19 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useUiData, useUserData } from '../context'
 
 const Error404 = () => {
   const { error } = useUiData()
   const { handleLogout } = useUserData()
 
+  const navigate = useNavigate()
+
+  console.log(error);
+  
   if (error === 'expired') {
-    setTimeout(handleLogout, 2500)
+    setTimeout(() => navigate('/'), 2000)
     return <div style={{ color: 'brown', fontSize: '2rem' }}> Session expired, redirecting to login page... </div>
   }
   if (error === 'logout') {
-    setTimeout(handleLogout, 2500)
     return <div style={{ color: 'brown', fontSize: '2rem' }}> Logging out, redirecting to login page... </div>
   }
 
