@@ -26,11 +26,11 @@ const Hero = () => {
       <p><Svgs name="world-icon" className={`${styles.small} ${styles.blue}`} /> View World Coffee Data & More! </p>
       
       <hr/>
-      <div style={{width: "66%", margin:"0 auto"}}>Did you know that the half-life of caffeine, the main stimulant in coffee, is typically around 4 to 8 hours? <br/>
-        This means that half of the caffeine you consume will be metabolized and eliminated from your body in that time. <br/> 
-        However, factors like age, liver function, and even pregnancy can affect how quickly caffeine is processed.  <br/>
-        For some, the effects of coffee can last much longer! Did you know that if you&apos;re a slow metabolizer, caffeine could stay in your system for up to 12 hours?  <br/>
-        So, drinking coffee later in the day might affect your sleep!</div>
+      <div style={{width: "66%", margin:"0 auto"}}>Did you know that the half-life of caffeine, the main stimulant in coffee, is typically around 4 to 8 hours? 🤓<br/>
+        This means that half of the caffeine you consume will be metabolized and eliminated from your body in that time. 🥱<br/> 
+        However, factors like age, liver function, and even pregnancy can affect how quickly caffeine is processed. 💤<br/>
+        For some, the effects of coffee can last much longer! Did you know that if you&apos;re a slow metabolizer, caffeine could stay in your system for up to 12 hours? 🤯<br/>
+        So, drinking coffee later in the day might affect your sleep! 🤌</div>
       <br/>
       <div style={{width: "66%", margin:"0 auto"}}>This website was built as my final college project. <br/>
        The main idea/feature was tracking and presenting personal coffee consumption history throughout time. <br/>

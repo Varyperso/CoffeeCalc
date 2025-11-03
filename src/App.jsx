@@ -20,32 +20,31 @@ const CoffeeWorld = React.lazy(() => import('./pages/CoffeeWorld.jsx'))
 
 // prettier-ignore
 function App() {
-
   return (
     <Router> 
       <UserProviderUi>
         <UserProviderUser >
           <UserProviderItems>
             <UserProviderUsers>
-              <> 
-                <Navbar />
-                <Sidebar />
-              </> 
+              
+              <Navbar />
+              <Sidebar />
+              
               <Suspense fallback={<div>Loading...</div>}>
                 <Routes>
                   <Route path="/" element={ <AuthRedirect /> } />
                   <Route exact path="/reset-password" element={ <ResetPassword /> } />
                   <Route exact path="*" element={ <Error404 /> } />
-                    <Route element={ <Layout /> }>
-                      <Route exact path="/users/:user" element={ <UserPage />} />
-                      <Route exact path="/items/:id" element={ <ItemPage />} />
-                      <Route exact path="/Home" element={ <Home /> } />
-                      <Route exact path="/ProductList" element={ <ProductList /> } />
-                      <Route exact path="/MyCart" element={ <MyCart /> } />
-                      <Route exact path="/CoffeeCalc" element={ <CoffeeCalc /> } />
-                      <Route exact path="/Chat" element={ <Chat /> } />
-                      <Route exact path="/CoffeeWorld" element={ <CoffeeWorld /> }/>
-                    </Route> 
+                  <Route element={ <Layout /> }>
+                    <Route exact path="/users/:user" element={ <UserPage />} />
+                    <Route exact path="/items/:id" element={ <ItemPage />} />
+                    <Route exact path="/Home" element={ <Home /> } />
+                    <Route exact path="/ProductList" element={ <ProductList /> } />
+                    <Route exact path="/MyCart" element={ <MyCart /> } />
+                    <Route exact path="/CoffeeCalc" element={ <CoffeeCalc /> } />
+                    <Route exact path="/Chat" element={ <Chat /> } />
+                    <Route exact path="/CoffeeWorld" element={ <CoffeeWorld /> }/>
+                  </Route> 
                 </Routes>
               </Suspense>
             </UserProviderUsers>
