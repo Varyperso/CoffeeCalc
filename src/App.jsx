@@ -1,9 +1,7 @@
 import React, { Suspense } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { UserProviderItems, UserProviderUser, UserProviderUsers, UserProviderUi } from './context/index.js'
 import Layout from './context/Layout.jsx'
-import Navbar from './Components/UI/Navbar.jsx'
-import Sidebar from './Components/UI/Sidebar.jsx'
 import ProductList from './pages/ProductList.jsx'
 import MyCart from './pages/MyCart.jsx'
 import Chat from './pages/Chat.jsx'
@@ -26,19 +24,15 @@ function App() {
         <UserProviderUser >
           <UserProviderItems>
             <UserProviderUsers>
-              
-              <Navbar />
-              <Sidebar />
-              
               <Suspense fallback={<div>Loading...</div>}>
                 <Routes>
                   <Route path="/" element={ <AuthRedirect /> } />
                   <Route exact path="/reset-password" element={ <ResetPassword /> } />
                   <Route exact path="*" element={ <Error404 /> } />
                   <Route element={ <Layout /> }>
+                    <Route exact path="/Home" element={<Home />} />
                     <Route exact path="/users/:user" element={ <UserPage />} />
                     <Route exact path="/items/:id" element={ <ItemPage />} />
-                    <Route exact path="/Home" element={ <Home /> } />
                     <Route exact path="/ProductList" element={ <ProductList /> } />
                     <Route exact path="/MyCart" element={ <MyCart /> } />
                     <Route exact path="/CoffeeCalc" element={ <CoffeeCalc /> } />

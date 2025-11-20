@@ -35,6 +35,7 @@ export const UserProviderUser = ({ children }) => {
     const parsedUser = loadFromLocalStorage('user', {});
     if (parsedUser._id) {
       const userData = await myFetch({ url: `https://localhost:5000/user/${parsedUser._id}` })
+      if (!userData._id) handleLogout() // not sure if need because navbar already has it
       setUser(userData);
     } 
   };

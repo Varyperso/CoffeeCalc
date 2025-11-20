@@ -3,6 +3,7 @@ import styles from './navbar.module.css'
 import Button from './Button'
 import { useUserData } from '../../context'
 import handleInactivity from '../../utils/handleInactivity'
+import { useEffect } from 'react'
 
 // prettier-ignore
 export default function Navbar() {
@@ -10,13 +11,15 @@ export default function Navbar() {
 
   handleInactivity() // token refresh
 
-  if (!loggedIn) return
- 
+  useEffect(() => {
+    if (!loggedIn) handleLogout() // comment out for demonstration purposes(all pages will work without signing in)
+  }, [])
+  
   return (
     <> 
       <nav className={styles.nav}>
         <NavLink to="/Home" className={styles.siteTitle}> CAFÉ-Calc </NavLink> 
-        <img src="/iconMug.jpg" alt="a mug of coffee" width="60px" height="60px" style={{display:"inline", maxWidth:"60px", float:"left"}}/>
+        <img src="/iconMug.jpg" alt="a mug of coffee" width="60px" height="60px" style={{ maxWidth:"60px", float:"left" }}/>
         <ul>
           <Button handler={handleLogout} className="logoutButton"> Logout </Button>
           <li className={styles.navli}>

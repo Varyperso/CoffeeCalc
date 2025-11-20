@@ -3,14 +3,11 @@ import styles from './hero.module.css'
 import Svgs from '../svg/Svgs'
 import { useUserData } from '../context'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 //prettier-ignore
 const Hero = () => {
-  const { loggedIn, setLoggedIn } = useUserData()
-  
-  const navigate = useNavigate()
-
-  if (loggedIn) navigate("/Home")
+  const { setLoggedIn } = useUserData()
 
   return (
     <>

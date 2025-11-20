@@ -1,15 +1,18 @@
 import { Outlet } from 'react-router-dom'
-import { useUserData, useUiData } from './'
+import { useUiData } from './'
+import Navbar from '../Components/UI/Navbar'
+import Sidebar from '../Components/UI/Sidebar'
 
 export default function Layout() {
   const { isExpanded } = useUiData()
-  const { loggedIn } = useUserData()
-
-  if (!loggedIn) return
 
   return (
-    <div className={`content ${isExpanded ? 'expandedContent' : 'collapsedContent'}`}>
-      <Outlet />
-    </div>
+    <>
+      <Navbar />
+      <Sidebar />
+      <div className={`content ${isExpanded ? 'expandedContent' : 'collapsedContent'}`}>
+        <Outlet />
+      </div>
+    </>
   )
 }

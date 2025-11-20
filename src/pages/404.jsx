@@ -3,7 +3,6 @@ import { useUiData, useUserData } from '../context'
 
 const Error404 = () => {
   const { error } = useUiData()
-  const { handleLogout } = useUserData()
 
   const navigate = useNavigate()
 

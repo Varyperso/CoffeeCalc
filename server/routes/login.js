@@ -16,7 +16,7 @@ const regexPassword = /^(?=[A-Za-z0-9]*[A-Z])(?=[A-Za-z0-9]*[0-9])[A-Za-z0-9]{8,
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
-  auth: { user: 'REDUCTED@gmail.com', pass: process.env.EMAIL_PW }
+  auth: { user: 'varyperso1@gmail.com', pass: process.env.EMAIL_PW }
 })
 
 router.post('/register', async (req, res) => {
@@ -33,7 +33,7 @@ router.post('/register', async (req, res) => {
     verificationCodes[email] = verificationCode
 
     await transporter.sendMail({
-      from: 'REDUCTED@gmail.com',
+      from: 'varyperso1@gmail.com',
       to: email,
       subject: 'Verify Your Email',
       text: `Your verification code is: ${verificationCode}`
@@ -123,7 +123,7 @@ router.post('/forgot-password', async (req, res) => {
     await user.save()
 
     await transporter.sendMail({
-      from: 'REDUCTED@gmail.com',
+      from: 'varyperso1@gmail.com',
       to: email,
       subject: 'Password Reset Request',
       text: `Click this link to reset your password: https://localhost:3000/reset-password?token=${resetToken}`

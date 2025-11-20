@@ -9,11 +9,7 @@ export default function handleInactivity() {
   const { handleLogout } = useUserData()
 
   const refreshToken = async () => {
-    try {
-      await myFetch({ url: `https://localhost:5000/refresh-token`, method: 'POST' })
-    } catch (error) {
-      console.error('Error refreshing token:', error)
-    }
+    await myFetch({ url: `https://localhost:5000/refresh-token`, method: 'POST' })
   }
 
   const handleUserActivity = () => {

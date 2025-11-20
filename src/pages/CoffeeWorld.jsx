@@ -52,8 +52,6 @@ function CoffeeInfoTable() {
     return item.Country.toLowerCase().includes(searchTerm.toLowerCase())
   })
 
-  console.log(currentFilteredItems)
-
   const handleSort = column => {
     sortAscOrDesc.current = !sortAscOrDesc.current
     let sortReturnValue = sortAscOrDesc.current ? 1 : -1

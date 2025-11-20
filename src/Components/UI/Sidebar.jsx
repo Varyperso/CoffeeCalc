@@ -1,13 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import styles from './sidebar.module.css'
 import Svgs from '../../svg/Svgs'
-import { useUserData, useUiData  } from '../../context'
+import { useUiData  } from '../../context'
 
 const Sidebar = () => {
-  const { loggedIn } = useUserData()
   const { isExpanded, setIsExpanded } = useUiData()
-
-  if (!loggedIn) return
   
   return (
     <nav className={`${styles.sidebar} ${isExpanded ? styles.expanded : styles.collapsed}`}>
